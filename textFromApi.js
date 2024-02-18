@@ -14,8 +14,11 @@ async function getRandomLinesFromAuthor(author) {
     return lines;
 }
 
-getRandomAuthor().then(async randomAuthor => {
+getRandomAuthor()
+    .then(async randomAuthor => {
     //console.log("Random Author:", randomAuthor);
     let randomLines = await getRandomLinesFromAuthor(randomAuthor);
     console.log("Random Lines:", randomLines);
+    let p = document.getElementById("lines-go-here")
+    p.innerHTML = randomLines.lines
 });
