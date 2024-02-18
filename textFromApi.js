@@ -7,16 +7,22 @@ async function getRandomAuthor() {
     return randomAuthor;
 }
 
-async function getRandomLinesFromAuthor(author) {
+async function getRandomLinesFromAuthor(author, lineCount) {
     let response = await fetch(`https://poetrydb.org/author/${author}/lines`);
     let data = await response.json();
-    let lines = data[Math.floor(Math.random() * data.length)].lines;
+    let randomIndex = Math.floor(Math.random() * data.length);
+    let lines = data[randomIndex].lines.slice(0, lineCount);
     return lines;
 }
 
-async function displayRandomLetters() {
+async function displayRandomLetters(minLineCount, maxLineCount) {
     let randomAuthor = await getRandomAuthor();
-    let randomLines = await getRandomLinesFromAuthor(randomAuthor);
+    let randomLines = await getRandomLinesFromAuthor(randomAuthor, maxLineCount);
+
+    // Ensure at least minLineCount lines are displayed
+    if (randomLines.length < minLineCount) {
+        randomLines = await getRandomLinesFromAuthor(randomAuthor, minLineCount);
+    }
 
     let container = document.getElementById("lines-go-here");
     container.innerHTML = ""; // Clear previous content
@@ -25,10 +31,17 @@ async function displayRandomLetters() {
         let line = randomLines[i];
         for (let j = 0; j < line.length; j++) {
             let letterDiv = document.createElement("div");
-            letterDiv.textContent = line[j];
+            if (line[j] === ' ') {
+                // For whitespace characters, create a space div
+                letterDiv.innerHTML = '&nbsp;';
+            } else {
+                // For non-whitespace characters, set textContent
+                letterDiv.textContent = line[j];
+            }
             container.appendChild(letterDiv);
         }
     }
 }
 
-displayRandomLetters();
+
+displayRandomLetters(15, 20);// Display min lines, max lines

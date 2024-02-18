@@ -1,5 +1,10 @@
 .container {
-    padding: 30px;
-    margin: 30px;
+    padding: 50px;
+    margin: 80px;
     
+}
+
+.letter-divs {
+    display: flex;
+    flex-wrap: wrap;
 }
