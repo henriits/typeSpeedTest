@@ -1,0 +1,27 @@
+.title,
+.data-output {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 800;
+    color: rgb(50, 38, 212);
+    padding: 10px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.data-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.letter-divs {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+}
