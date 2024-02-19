@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Lines</title>
     <link rel="stylesheet" href="container.css">
 </head>
+
 <body>
     <div class="container">
-    <div class="letter-divs" id="lines-go-here"></div>
-</div>
+        <div>
+            <div class="title">Words/min</div>
+            <div class="wpm"></div>
+        </div>
+        <div>
+            <div class="title">Errors</div>
+            <div class="error"></div>
+        </div>
+        <div>
+            <div class="title">Time</div>
+            <div class="time"></div>
+        </div>
+        <div>
+            <div class="title">Accuracy %</div>
+            <div class="accuracy"></div>
+        </div>
+        <br>
+        <div class="letter-divs" id="lines-go-here"></div>
+    </div>
     <script type="module" src="scripts/main.js"></script>
 </body>
+
 </html>
