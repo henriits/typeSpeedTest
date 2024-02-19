@@ -1,3 +1,6 @@
+let container = document.getElementById("lines-go-here");
+
+
 async function getRandomAuthor() {
     let response = await fetch("https://poetrydb.org/author");
     let data = await response.json();
@@ -15,7 +18,7 @@ async function getRandomLinesFromAuthor(author, lineCount) {
     return lines;
 }
 
-async function displayRandomLetters(minLineCount, maxLineCount) {
+export async function displayRandomLetters(minLineCount, maxLineCount) {
     let randomAuthor = await getRandomAuthor();
     let randomLines = await getRandomLinesFromAuthor(randomAuthor, maxLineCount);
 
@@ -24,7 +27,7 @@ async function displayRandomLetters(minLineCount, maxLineCount) {
         randomLines = await getRandomLinesFromAuthor(randomAuthor, minLineCount);
     }
 
-    let container = document.getElementById("lines-go-here");
+
     container.innerHTML = ""; // Clear previous content
 
     for (let i = 0; i < randomLines.length; i++) {
@@ -44,4 +47,5 @@ async function displayRandomLetters(minLineCount, maxLineCount) {
 }
 
 
-displayRandomLetters(15, 20);// Display min lines, max lines
+
+
