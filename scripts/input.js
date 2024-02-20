@@ -4,7 +4,9 @@ export function InputLetters() {
     textarea.addEventListener("input", function() {
         const text = textarea.value;
         console.log(text); // Log the current value of the textarea
+        const textArray = text.split("")
+        console.log(textArray)
     });
 }
 
-// Call the function to start logging input letters
+
