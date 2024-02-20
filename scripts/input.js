@@ -1,4 +1,10 @@
+export function InputLetters() {
+    const textarea = document.getElementById("inputArea");
 
-function textInput() {
-    
+    textarea.addEventListener("input", function() {
+        const text = textarea.value;
+        console.log(text); // Log the current value of the textarea
+    });
 }
+
+// Call the function to start logging input letters
