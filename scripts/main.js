@@ -13,5 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-// Add event listener to the startButton
+//event listener to the startButton
 startButton.addEventListener("click", startTimer);
+//event listener to start timer when click on input area, later maybe improve to only start once typing..
+document.querySelector('.inputArea').addEventListener("focus", startTimer);
