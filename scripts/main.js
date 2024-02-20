@@ -1,6 +1,6 @@
 import { displayRandomLetters } from "./textFromApi.js";
-import { minimumLinesOfText, maximumLinesOfText} from './variables.js';
-import { updateTimer } from "./timer.js";
+import { minimumLinesOfText, maximumLinesOfText, startButton, } from './variables.js';
+import { startTimer } from "./timer.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
     async function displayRandom() {
@@ -9,13 +9,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     await displayRandom();
-
-    async function startTimer(){
-        setInterval(updateTimer, 1000);
-    }
-
-    startTimer()
-
-
-
 });
+
+
+
+// Add event listener to the startButton
+startButton.addEventListener("click", startTimer);
