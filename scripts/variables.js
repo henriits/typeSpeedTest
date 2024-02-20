@@ -7,4 +7,5 @@ export let timeLeftText = document.querySelector("#time")
 export let minimumLinesOfText = 10
 export let maximumLinesOfText = 15
 
+// currently need to click start for timer to start , in future start timer when start typing...
 export let startButton = document.querySelector(".start")

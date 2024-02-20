@@ -1,14 +1,14 @@
-import { displayRandomLetters } from "./textFromApi.js";
+import { displayRandomLines } from "./textFromApi.js";
 import { minimumLinesOfText, maximumLinesOfText, startButton, } from './variables.js';
 import { startTimer } from "./timer.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
-    async function displayRandom() {
-        let text = await displayRandomLetters(minimumLinesOfText, maximumLinesOfText);
+    async function displayText() {
+        let text = await displayRandomLines(minimumLinesOfText, maximumLinesOfText);
         return text;
     }
 
-    await displayRandom();
+    await displayText();
 });
 
 

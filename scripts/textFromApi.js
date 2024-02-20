@@ -18,7 +18,7 @@ async function getRandomLinesFromAuthor(author, lineCount) {
     return lines;
 }
 
-export async function displayRandomLetters(minLineCount, maxLineCount) {
+export async function displayRandomLines(minLineCount, maxLineCount) {
     let randomAuthor = await getRandomAuthor();
     let randomLines = await getRandomLinesFromAuthor(randomAuthor, maxLineCount);
 
@@ -33,15 +33,15 @@ export async function displayRandomLetters(minLineCount, maxLineCount) {
     for (let i = 0; i < randomLines.length; i++) {
         let line = randomLines[i];
         for (let j = 0; j < line.length; j++) {
-            let letterDiv = document.createElement("div");
+            let letterSpan = document.createElement("span");
             if (line[j] === ' ') {
                 // For whitespace characters, create a space div
-                letterDiv.innerHTML = '&nbsp;';
+                letterSpan.innerHTML = '&nbsp;';
             } else {
                 // For non-whitespace characters, set textContent
-                letterDiv.textContent = line[j];
+                letterSpan.textContent = line[j];
             }
-            container.appendChild(letterDiv);
+            container.appendChild(letterSpan);
         }
     }
 }
