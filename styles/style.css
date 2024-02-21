@@ -25,3 +25,11 @@
     flex-wrap: wrap;
     max-width: 600px;
 }
+
+.correct {
+    color: green;
+}
+
+.false {
+    color:red;
+}
