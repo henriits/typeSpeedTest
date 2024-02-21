@@ -1,3 +1,7 @@
+export const textarea = document.getElementById("inputArea");
+export const errorsElement = document.getElementById("error");
+
+
 export let wordsPerMinuteText = document.querySelector("#wpm")
 export let accuracyCorrectText = document.querySelector("#accuracy")
 export let lettersWrongText = document.querySelector("#error")

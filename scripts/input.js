@@ -1,36 +1,37 @@
+import { textarea,errorsElement,} from "./variables.js";
+
+
 let inputCount = 0;
 let errors = 0;
 
 
 export function InputLetters() {
-    const textarea = document.getElementById("inputArea");
+ // Select the HTML element representing the error count
+
 
     textarea.addEventListener("input", function() {
         const text = textarea.value;
-        console.log(text); // Log the current value of the textarea
-        const textArray = text.split("")
-        console.log(textArray)
+        const textArray = text.split("");
         inputCount++;
-        console.log(inputCount)
         errors = 0;
 
-        let randomTextSpan = document.querySelectorAll(".letter"); // Target spans with the added class
-        console.log(randomTextSpan)
+        let randomTextSpan = document.querySelectorAll(".letter");
         randomTextSpan.forEach((char, index) => {
             let typed = textArray[index];
             if (typed == null) {
                 char.classList.remove("correct");
-                char.classList.remove("false"); // Remove both classes when there's no typed character
+                char.classList.remove("false");
             } else if (typed === char.innerText) {
                 char.classList.add("correct");
-                char.classList.remove("false"); // Remove "false" class when typed character matches
+                char.classList.remove("false");
             } else {
-                char.classList.remove("correct"); // Remove "correct" class if typed character doesn't match
+                char.classList.remove("correct");
                 char.classList.add("false");
+                errors++;
             }
         });
 
-
+        // Update the error count in the HTML
+        errorsElement.textContent = errors;
     });
 }
-
