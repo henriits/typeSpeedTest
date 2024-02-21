@@ -1,15 +1,10 @@
-import { textarea,errorsElement,} from "./variables.js";
-
+import { textarea, errorsElement } from "./variables.js";
 
 let inputCount = 0;
 let errors = 0;
 
-
 export function InputLetters() {
- // Select the HTML element representing the error count
-
-
-    textarea.addEventListener("input", function() {
+    textarea.addEventListener("input", function () {
         const text = textarea.value;
         const textArray = text.split("");
         inputCount++;
@@ -18,10 +13,11 @@ export function InputLetters() {
         let randomTextSpan = document.querySelectorAll(".letter");
         randomTextSpan.forEach((char, index) => {
             let typed = textArray[index];
+            let charText = char.innerText.trim(); // Trim the inner text to remove leading/trailing spaces
             if (typed == null) {
                 char.classList.remove("correct");
                 char.classList.remove("false");
-            } else if (typed === char.innerText) {
+            } else if (typed.trim() === charText) { // Trim the typed character for comparison
                 char.classList.add("correct");
                 char.classList.remove("false");
             } else {
