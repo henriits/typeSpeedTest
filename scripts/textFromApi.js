@@ -27,13 +27,13 @@ export async function displayRandomLines(minLineCount, maxLineCount) {
         randomLines = await getRandomLinesFromAuthor(randomAuthor, minLineCount);
     }
 
-
     container.innerHTML = ""; // Clear previous content
 
     for (let i = 0; i < randomLines.length; i++) {
         let line = randomLines[i];
         for (let j = 0; j < line.length; j++) {
             let letterSpan = document.createElement("span");
+            letterSpan.classList.add("letter"); // Add a class to each span
             if (line[j] === ' ') {
                 // For whitespace characters, create a space div
                 letterSpan.innerHTML = '&nbsp;';
