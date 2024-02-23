@@ -1,4 +1,4 @@
-import { textarea, errorsElement } from "./variables.js";
+import { textarea, errorsElement, accuracyCorrectText } from "./variables.js";
 
 let inputCount = 0;
 let errors = 0;
@@ -29,5 +29,14 @@ export function InputLetters() {
 
         // Update the error count in the HTML
         errorsElement.textContent = errors;
+
+        let textThatWasTypedCorrect = inputCount - errors
+
+        let accuracy = ((textThatWasTypedCorrect / inputCount)* 100)
+
+        accuracyCorrectText.textContent = accuracy
     });
+
+
+
 }
