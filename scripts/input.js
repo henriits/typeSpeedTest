@@ -1,4 +1,5 @@
-import { textarea, errorsElement, accuracyCorrectText } from "./variables.js";
+import { timePassed } from "./timer.js";
+import { textarea, errorsElement, accuracyCorrectText, wordsPerMinuteText } from "./variables.js";
 
 let inputCount = 0;
 let errors = 0;
@@ -36,6 +37,12 @@ export function InputLetters() {
         let roundedAccuracy = Math.round(accuracy)
 
         accuracyCorrectText.textContent = roundedAccuracy
+
+        // this calculation comes quite close to real word count
+        let wordsPerMinute = (text.length / 5 / timePassed) * 60;
+        let roundedWPM = Math.round(wordsPerMinute)
+
+        wordsPerMinuteText.textContent = roundedWPM
     });
 
 
