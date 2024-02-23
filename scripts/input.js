@@ -33,8 +33,9 @@ export function InputLetters() {
         let textThatWasTypedCorrect = inputCount - errors
 
         let accuracy = ((textThatWasTypedCorrect / inputCount)* 100)
+        let roundedAccuracy = Math.round(accuracy)
 
-        accuracyCorrectText.textContent = accuracy
+        accuracyCorrectText.textContent = roundedAccuracy
     });
 
 
