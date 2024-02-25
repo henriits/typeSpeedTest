@@ -56,7 +56,15 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("resetButton").addEventListener("click", resetEverything);
     document.getElementById("restartButton").addEventListener("click", restartWithCurrentText);
 
-
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            restartWithCurrentText();
+        }
+        else if (event.key === "Escape") {
+            resetEverything();
+        }
+    });
     InputData();
 
     // Display initial text
