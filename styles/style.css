@@ -33,3 +33,9 @@
 .false {
     color:red;
 }
+
+/*Move the input area away, but keep the functionality*/
+#inputArea {
+    left: -9999px;
+    opacity: 0;
+}

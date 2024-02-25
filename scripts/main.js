@@ -8,15 +8,26 @@ async function displayText() {
     return text;
 }
 
+
 async function resetEverything() {
     resetTimer();
-    document.getElementById("inputArea").value = "";
-    await displayText();
+    document.getElementById("inputArea").value = ""; // Clear the textarea
+    await displayText(); // Fetch and display new text
+    document.getElementById("inputArea").focus(); // Focus on the textarea
+}
+
+// Event listener to start timer only on the first key press in the input area
+function startTimerOnFirstKeyPress() {
+    startTimer();
+    document.getElementById("inputArea").removeEventListener("input", startTimerOnFirstKeyPress);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Event listener to start timer when click on input area
-    document.querySelector('#inputArea').addEventListener("focus", startTimer);
+    // Focus on the input area when the DOM content is loaded
+    document.getElementById("inputArea").focus();
+
+    // Event listener to start timer when any key is pressed in the input area
+    document.getElementById("inputArea").addEventListener("input", startTimerOnFirstKeyPress);
 
     // Event listener for the reset button
     document.getElementById("resetButton").addEventListener("click", resetEverything);
