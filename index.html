@@ -11,34 +11,34 @@
 <body>
     <div class="container">
         <div class="data-container">
-            <div>
-                <div class="title">Words/min</div>
+            <div class="title-data">
+                <div class="title">WPM</div>
                 <div class="data-output" id="wpm">0</div>
             </div>
-            <div>
+            <div class="title-data">
                 <div class="title">Errors</div>
                 <div class="data-output" id="error">0</div>
             </div>
-            <div>
+            <div class="title-data">
                 <div class="title">Time</div>
                 <div class="data-output" id="time">0</div>
             </div>
-            <div>
+            <div class="title-data">
                 <div class="title">Accuracy %</div>
                 <div class="data-output" id="accuracy">0</div>
             </div>
             <div class="title">
-                <input type="button" value="Reset" id="resetButton">
-                <input type="button" value="Restart" id="restartButton">
+                <button class="btn" id="resetButton"><i class="fas fa-undo"></i> Reset</button>
+                <button class="btn" id="restartButton"><i class="fas fa-redo"></i> Restart</button>
             </div>
         </div>
-        <br>
+
         <div class="text-container">
             <div class="letter-divs" id="lines-go-here"></div>
         </div>
 
     </div>
-    <div class="previous-container">
+    <div class="previous-container hide-previous" id="previous-data">
         <div>
             <div class="previous-wpm">Previous WPM</div>
             <div class="wpm-result" id="previous-wpm-result"></div>
@@ -47,11 +47,14 @@
             <div class="">Previous Accuracy</div>
             <div class="wpm-result" id="previous-accuracy-result"></div>
         </div>
+    </div>
 
+
+
+    <div class="input-area">
+        <textarea id="inputArea" cols="30" rows="10" placeholder="Start typing here..."></textarea>
     </div>
-    <div>
-        <textarea id="inputArea" cols="30" rows="10"></textarea>
-    </div>
+
     <script type="module" src="scripts/main.js"></script>
 </body>
 

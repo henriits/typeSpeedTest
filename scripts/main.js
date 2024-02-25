@@ -2,6 +2,7 @@ import { displayRandomLines } from "./textFromApi.js";
 import { minimumLinesOfText, maximumLinesOfText } from './variables.js';
 import { startTimer, resetTimer } from "./timer.js";
 import { InputData } from "./input.js";
+import { previousData } from "./variables.js";
 
 async function displayText() {
     const text = await displayRandomLines(minimumLinesOfText, maximumLinesOfText);
@@ -11,6 +12,7 @@ async function displayText() {
 
 async function resetEverything() {
     resetTimer();
+    previousData.classList.add("hide-previous")
     document.getElementById("inputArea").value = ""; // Clear the textarea
     await displayText(); // Fetch and display new text
     document.getElementById("inputArea").focus(); // Focus on the textarea
@@ -21,6 +23,7 @@ async function resetEverything() {
 
 async function restartWithCurrentText() {
     resetTimer();
+    previousData.classList.add("hide-previous")
     document.getElementById("inputArea").value = ""; // Clear the textarea
     document.getElementById("inputArea").focus(); // Focus on the textarea
 

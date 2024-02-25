@@ -1,45 +1,98 @@
-.title,
-.data-output {
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: 800;
-    color: rgb(50, 38, 212);
-    padding: 10px;
-    text-align: center;
+body {
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .data-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.title-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    height: 40px;
+    width: 250px;
+    padding: 5px;
+}
+
+.title {
+    color: #4E9F3D;
+    font-weight: bold;
+}
+
+.data-output {
+    color: #1E5128;
+    font-size: 1.2rem;
+    
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.text-container {
+    max-width: 60%;
 }
 
 .letter-divs {
     display: flex;
     flex-wrap: wrap;
-    max-width: 600px;
+    gap: 5px;
+    background-color: #D8E9A8;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .correct {
-    color: green;
+    color: #4CAF50; /* Green color for correct */
 }
 
 .false {
-    color:red;
+    color: #FF5252; /* Red color for false */
 }
 
-/*Move the input area away, but keep the functionality*/
+.previous-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+.previous-container div {
+    margin-bottom: 5px;
+}
+
+.hide-previous {
+    display: none;
+}
+
+.input-container {
+    margin-top: 20px;
+}
+
+/* Move the input area away, but keep the functionality */
 #inputArea {
+    position: absolute;
     left: -9999px;
     opacity: 0;
-}
-
-#latest {
-    background-color: aquamarine;
 }

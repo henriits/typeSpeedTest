@@ -1,8 +1,7 @@
-import { timeLeftText } from './variables.js';
-import { textarea } from './variables.js';
+import { timeLeftText ,textarea, previousData} from './variables.js';
 
 let intervalId; // Variable to store the interval ID
-export let timeLeft = 60;
+export let timeLeft = 10;
 export let timePassed = 0;
 
 // Variables tracking input count and errors
@@ -19,6 +18,7 @@ export function updateTimer() {
         timeLeftText.textContent = "Timer has ended"; // Update the text content
         console.log("Timer has ended");
         textarea.disabled = true // Disable textarea when timer runs out
+        previousData.classList.remove("hide-previous")
     }
 }
 
@@ -33,6 +33,7 @@ export function resetTimer() {
     timeLeft = 60;
     timePassed = 0;
     timeLeftText.textContent = timeLeft;
+    textarea.disabled = false
 
     // Reset input count ,errors and text
     inputCount = 0;

@@ -13,3 +13,5 @@ export let maximumLinesOfText = 8
 
 export let previousWPM = document.getElementById("previous-wpm-result")
 export let previousAccuracy = document.getElementById("previous-accuracy-result")
+
+export let previousData = document.getElementById("previous-data")
