@@ -16,15 +16,26 @@ function updateAccuracyAndWPM() {
         if (typed == null) {
             char.classList.remove("correct");
             char.classList.remove("false");
+            char.style.backgroundColor = ""; // Remove any background color
         } else if (typed.trim() === charText) { // Trim the typed character for comparison
             char.classList.add("correct");
             char.classList.remove("false");
+            char.style.backgroundColor = ""; // Remove any background color
         } else {
             char.classList.remove("correct");
             char.classList.add("false");
+            char.style.backgroundColor = ""; // Remove any background color
             errors++;
         }
     });
+
+    // Apply gray background color to the last typed character
+    if (textArray.length > 0) {
+        let lastTypedCharIndex = textArray.length - 1;
+        let lastTypedChar = randomTextSpan[lastTypedCharIndex];
+        lastTypedChar.style.backgroundColor = "lightgray";
+    }
+
 
 
     const lettersThatAreTypedCorrect = inputCount - errors;

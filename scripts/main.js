@@ -14,7 +14,7 @@ async function resetEverything() {
     document.getElementById("inputArea").value = ""; // Clear the textarea
     await displayText(); // Fetch and display new text
     document.getElementById("inputArea").focus(); // Focus on the textarea
-    
+
     // Reattach the event listener to start the timer on key press
     document.getElementById("inputArea").addEventListener("input", startTimerOnFirstKeyPress);
 }
