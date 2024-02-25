@@ -1,5 +1,5 @@
 import { timePassed } from "./timer.js";
-import { textarea, errorsElement, accuracyCorrectText, wordsPerMinuteText } from "./variables.js";
+import { textarea, errorsElement, accuracyCorrectText, wordsPerMinuteText, previousWPM, previousAccuracy} from "./variables.js";
 
 let inputCount = 0;
 let errors = 0;
@@ -52,6 +52,16 @@ export function InputLetters() {
         localStorage.setItem("wpm", roundedWPM);
     });
 
+    // Retrieve accuracy from local storage
+    const storedAccuracy = localStorage.getItem("accuracy");
+    if (storedAccuracy !== null) {
+        previousAccuracy.textContent = storedAccuracy;
+    }
 
+    // Retrieve WPM from local storage
+    const storedWPM = localStorage.getItem("wpm");
+    if (storedWPM !== null) {
+        previousWPM.textContent = storedWPM;
+    }
 
 }

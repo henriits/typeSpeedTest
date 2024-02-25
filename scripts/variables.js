@@ -11,4 +11,5 @@ export let timeLeftText = document.querySelector("#time")
 export let minimumLinesOfText = 5
 export let maximumLinesOfText = 8
 
-
+export let previousWPM = document.getElementById("previous-wpm-result")
+export let previousAccuracy = document.getElementById("previous-accuracy-result")
