@@ -36,6 +36,9 @@ export function InputLetters() {
         let accuracy = ((lettersThatAreTypedCorrect / inputCount)* 100)
         let roundedAccuracy = Math.round(accuracy)
 
+        // Store accuracy in local storage
+        localStorage.setItem("accuracy", roundedAccuracy);
+
         accuracyCorrectText.textContent = roundedAccuracy
 
         // this calculation comes quite close to real word count
@@ -43,6 +46,10 @@ export function InputLetters() {
         let roundedWPM = Math.round(wordsPerMinute)
 
         wordsPerMinuteText.textContent = roundedWPM
+
+        
+        // Store WPM in local storage
+        localStorage.setItem("wpm", roundedWPM);
     });
 
 
