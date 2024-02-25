@@ -1,5 +1,6 @@
 
 import { timeLeftText } from './variables.js';
+import { textarea } from './variables.js';
 
 let intervalId; // Variable to store the interval ID
 export let timeLeft = 60;
@@ -18,6 +19,7 @@ export function updateTimer() {
         clearInterval(intervalId); // Clear the interval
         timeLeftText.textContent = "Timer has ended"; // Update the text content
         console.log("Timer has ended");
+        textarea.disabled = true // Disable textarea when timer runs out
     }
 }
 
