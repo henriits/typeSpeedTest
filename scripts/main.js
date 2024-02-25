@@ -19,6 +19,25 @@ async function resetEverything() {
     document.getElementById("inputArea").addEventListener("input", startTimerOnFirstKeyPress);
 }
 
+async function restartWithCurrentText() {
+    resetTimer();
+    document.getElementById("inputArea").value = ""; // Clear the textarea
+    document.getElementById("inputArea").focus(); // Focus on the textarea
+
+    // Remove .letter classes from all elements
+    let letters = document.querySelectorAll(".letter");
+    letters.forEach(letter => {
+        letter.classList.remove("correct");
+        letter.classList.remove("false");
+        letter.classList.remove("current")
+        letter.style.backgroundColor = "";
+    });
+
+    // Reattach the event listener to start the timer on key press
+    document.getElementById("inputArea").addEventListener("input", startTimerOnFirstKeyPress);
+}
+
+
 
 // Event listener to start timer only on the first key press in the input area
 function startTimerOnFirstKeyPress() {
@@ -35,8 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Event listener for the reset button
     document.getElementById("resetButton").addEventListener("click", resetEverything);
+    document.getElementById("restartButton").addEventListener("click", restartWithCurrentText);
 
-    // Call Inputata to initialize input recognition
+
     InputData();
 
     // Display initial text
