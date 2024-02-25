@@ -1,8 +1,13 @@
+
 import { timeLeftText } from './variables.js';
 
+let intervalId; // Variable to store the interval ID
 export let timeLeft = 60;
 export let timePassed = 0;
-let intervalId; // Variable to store the interval ID
+
+// Variables tracking input count and errors
+let inputCount = 0;
+let errors = 0;
 
 export function updateTimer() {
     if (timeLeft > 0) {
@@ -21,3 +26,18 @@ export function startTimer() {
     intervalId = setInterval(updateTimer, 1000);
 }
 
+
+export function resetTimer() {
+    clearInterval(intervalId);
+    timeLeft = 60;
+    timePassed = 0;
+    timeLeftText.textContent = timeLeft;
+
+    // Reset input count ,errors and text
+    inputCount = 0;
+    errors = 0;
+    document.getElementById("inputArea").value = "";
+    document.getElementById("error").textContent = "0";
+    document.getElementById("accuracy").textContent = "0";
+    document.getElementById("wpm").textContent = "0";
+}
