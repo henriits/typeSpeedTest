@@ -31,15 +31,15 @@ export function InputLetters() {
         // Update the error count in the HTML
         errorsElement.textContent = errors;
 
-        let textThatWasTypedCorrect = inputCount - errors
+        let lettersThatAreTypedCorrect = inputCount - errors
 
-        let accuracy = ((textThatWasTypedCorrect / inputCount)* 100)
+        let accuracy = ((lettersThatAreTypedCorrect / inputCount)* 100)
         let roundedAccuracy = Math.round(accuracy)
 
         accuracyCorrectText.textContent = roundedAccuracy
 
         // this calculation comes quite close to real word count
-        let wordsPerMinute = (text.length / 5 / timePassed) * 60;
+        let wordsPerMinute = ((lettersThatAreTypedCorrect / 5 )/ timePassed) * 60;
         let roundedWPM = Math.round(wordsPerMinute)
 
         wordsPerMinuteText.textContent = roundedWPM
