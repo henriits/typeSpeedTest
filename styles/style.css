@@ -39,3 +39,7 @@
     left: -9999px;
     opacity: 0;
 }
+
+#latest {
+    background-color: aquamarine;
+}

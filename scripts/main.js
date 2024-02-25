@@ -1,7 +1,7 @@
 import { displayRandomLines } from "./textFromApi.js";
 import { minimumLinesOfText, maximumLinesOfText } from './variables.js';
 import { startTimer, resetTimer } from "./timer.js";
-import { InputLetters } from "./input.js";
+import { InputData } from "./input.js";
 
 async function displayText() {
     const text = await displayRandomLines(minimumLinesOfText, maximumLinesOfText);
@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Event listener for the reset button
     document.getElementById("resetButton").addEventListener("click", resetEverything);
 
-    // Call InputLetters to initialize input recognition
-    InputLetters();
+    // Call Inputata to initialize input recognition
+    InputData();
 
     // Display initial text
     displayText();

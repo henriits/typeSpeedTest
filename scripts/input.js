@@ -1,67 +1,55 @@
 import { timePassed } from "./timer.js";
-import { textarea, errorsElement, accuracyCorrectText, wordsPerMinuteText, previousWPM, previousAccuracy} from "./variables.js";
+import { textarea, errorsElement, accuracyCorrectText, wordsPerMinuteText, previousWPM, previousAccuracy } from "./variables.js";
 
 let inputCount = 0;
-let errors = 0;
 
-export function InputLetters() {
-    textarea.addEventListener("input", function () {
-        const text = textarea.value;
-        const textArray = text.split("");
-        inputCount++;
-        errors = 0;
+function updateAccuracyAndWPM() {
+    const text = textarea.value;
+    const textArray = text.split("");
+    let errors = 0;
+    inputCount++;
 
-        let randomTextSpan = document.querySelectorAll(".letter");
-        randomTextSpan.forEach((char, index) => {
-            let typed = textArray[index];
-            let charText = char.innerText.trim(); // Trim the inner text to remove leading/trailing spaces
-            if (typed == null) {
-                char.classList.remove("correct");
-                char.classList.remove("false");
-            } else if (typed.trim() === charText) { // Trim the typed character for comparison
-                char.classList.add("correct");
-                char.classList.remove("false");
-            } else {
-                char.classList.remove("correct");
-                char.classList.add("false");
-                errors++;
-            }
-        });
-
-        // Update the error count in the HTML
-        errorsElement.textContent = errors;
-
-        let lettersThatAreTypedCorrect = inputCount - errors
-
-        let accuracy = ((lettersThatAreTypedCorrect / inputCount)* 100)
-        let roundedAccuracy = Math.round(accuracy)
-
-        // Store accuracy in local storage
-        localStorage.setItem("accuracy", roundedAccuracy);
-
-        accuracyCorrectText.textContent = roundedAccuracy
-
-        // this calculation comes quite close to real word count
-        let wordsPerMinute = ((lettersThatAreTypedCorrect / 5 )/ timePassed) * 60;
-        let roundedWPM = Math.round(wordsPerMinute)
-
-        wordsPerMinuteText.textContent = roundedWPM
-
-        
-        // Store WPM in local storage
-        localStorage.setItem("wpm", roundedWPM);
+    let randomTextSpan = document.querySelectorAll(".letter");
+    randomTextSpan.forEach((char, index) => {
+        let typed = textArray[index];
+        let charText = char.innerText.trim(); // Trim the inner text to remove leading/trailing spaces
+        if (typed == null) {
+            char.classList.remove("correct");
+            char.classList.remove("false");
+        } else if (typed.trim() === charText) { // Trim the typed character for comparison
+            char.classList.add("correct");
+            char.classList.remove("false");
+        } else {
+            char.classList.remove("correct");
+            char.classList.add("false");
+            errors++;
+        }
     });
 
-    // Retrieve accuracy from local storage
+
+    const lettersThatAreTypedCorrect = inputCount - errors;
+    const accuracy = Math.round((lettersThatAreTypedCorrect / inputCount) * 100);
+    localStorage.setItem("accuracy", accuracy);
+    accuracyCorrectText.textContent = accuracy;
+
+    const wordsPerMinute = Math.round((lettersThatAreTypedCorrect / 5) / timePassed * 60);
+    localStorage.setItem("wpm", wordsPerMinute);
+    wordsPerMinuteText.textContent = wordsPerMinute;
+    errorsElement.textContent = errors;
+
+}
+
+export function InputData() {
+    textarea.addEventListener("input", updateAccuracyAndWPM);
+
     const storedAccuracy = localStorage.getItem("accuracy");
     if (storedAccuracy !== null) {
         previousAccuracy.textContent = storedAccuracy;
     }
 
-    // Retrieve WPM from local storage
     const storedWPM = localStorage.getItem("wpm");
     if (storedWPM !== null) {
         previousWPM.textContent = storedWPM;
     }
-
 }
+
