@@ -1,4 +1,3 @@
-
 import { timeLeftText } from './variables.js';
 import { textarea } from './variables.js';
 
