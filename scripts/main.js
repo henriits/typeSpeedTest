@@ -62,6 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Event listener to start timer when any key is pressed in the input area
     document.getElementById("inputArea").addEventListener("input", startTimerOnFirstKeyPress);
 
+
+    // When clicking on the text container, will be focused on input area
+    const letterContainer = document.querySelector(".letter-divs");
+    letterContainer.addEventListener("click", function() {
+        document.getElementById("inputArea").focus();
+    });
+
     // Event listener for the reset button
     document.getElementById("resetButton").addEventListener("click", resetEverything);
     document.getElementById("restartButton").addEventListener("click", restartWithCurrentText);
