@@ -100,17 +100,10 @@ function updateAccuracyAndWPM() {
     wpmForGraph.textContent = wordsPerMinute;
     errorsElement.textContent = errors;
 
-    const storedAccuracy = localStorage.getItem("accuracy");
-    if (storedAccuracy !== null) {
-        previousAccuracy.textContent = storedAccuracy;
-    }
 
-    const storedWPM = localStorage.getItem("wpm");
-    if (storedWPM !== null) {
-        previousWPM.textContent = storedWPM;
-    }
     updateProgressBar(latestWPMProgress, wordsPerMinute);
     updateProgressBar(latestAccuracyProgress, accuracy); 
+
 
 }
 
@@ -126,4 +119,6 @@ export function InputData() {
     if (storedWPM !== null) {
         previousWPM.textContent = storedWPM;
     }
+    updateProgressBar(previousWPMProgress, storedWPM);
+    updateProgressBar(previousAccuracyProgress, storedAccuracy); 
 }
