@@ -10,6 +10,13 @@ export let wordsPerMinuteText = document.getElementById("wpm")
 export let wpmForGraph = document.getElementById("wpmForGraph")
 export let accuracyForGraph = document.getElementById("accuracyForGraph")
 
+
+
+const latestWPMProgress = document.getElementById("latest-wpm-progress");
+const latestAccuracyProgress = document.getElementById("latest-accuracy-progress");
+const previousWPMProgress = document.getElementById("previous-wpm-progress");
+const previousAccuracyProgress = document.getElementById("previous-accuracy-progress");
+
 let inputCount = 0;
 let errors = 0;
 
@@ -69,6 +76,9 @@ function applyLastTypedCharStyle(text, randomTextSpan) {
         lastTypedChar.style.backgroundColor = "lightgray";
     }
 }
+function updateProgressBar(progressBar, percentage) {
+    progressBar.style.width = percentage + "%";
+}
 
 function updateAccuracyAndWPM() {
     const text = textarea.value;
@@ -89,6 +99,19 @@ function updateAccuracyAndWPM() {
     wordsPerMinuteText.textContent = wordsPerMinute;
     wpmForGraph.textContent = wordsPerMinute;
     errorsElement.textContent = errors;
+
+    const storedAccuracy = localStorage.getItem("accuracy");
+    if (storedAccuracy !== null) {
+        previousAccuracy.textContent = storedAccuracy;
+    }
+
+    const storedWPM = localStorage.getItem("wpm");
+    if (storedWPM !== null) {
+        previousWPM.textContent = storedWPM;
+    }
+    updateProgressBar(latestWPMProgress, wordsPerMinute);
+    updateProgressBar(latestAccuracyProgress, accuracy); 
+
 }
 
 export function InputData() {
