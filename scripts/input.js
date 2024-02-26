@@ -7,6 +7,8 @@ export const errorsElement = document.getElementById("error");
 export let accuracyCorrectText = document.getElementById("accuracy")
 export let lettersWrongText = document.querySelector("#error")
 export let wordsPerMinuteText = document.getElementById("wpm")
+export let wpmForGraph = document.getElementById("wpmForGraph")
+export let accuracyForGraph = document.getElementById("accuracyForGraph")
 
 let inputCount = 0;
 let errors = 0;
@@ -62,10 +64,12 @@ function updateAccuracyAndWPM() {
     const accuracy = inputCount > 0 ? Math.round(((inputCount - errors) / inputCount) * 100) : 100;
     localStorage.setItem("accuracy", accuracy);
     accuracyCorrectText.textContent = accuracy;
+    accuracyForGraph.textContent = accuracy;
 
     const wordsPerMinute = Math.round((typedWords.length / timePassed) * 60);
     localStorage.setItem("wpm", wordsPerMinute);
     wordsPerMinuteText.textContent = wordsPerMinute;
+    wpmForGraph.textContent = wordsPerMinute;
     errorsElement.textContent = errors;
 }
 

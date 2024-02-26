@@ -77,6 +77,8 @@ body {
 }
 
 .previous-container {
+    display: flex;
+    flex-direction: column;
     margin-top: 20px;
     padding: 20px;
     background-color: #fff;
@@ -84,9 +86,13 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
 }
 
-.previous-container div {
-    margin-bottom: 5px;
+
+
+.graph-content {
+    flex-grow: 1;
+    margin-left: 10px; /* Adjust as needed */
 }
+
 
 .hide-previous {
     display: none;
@@ -119,4 +125,23 @@ body {
     display: flex;
     flex-direction: row;
     color: #fff;
+}
+
+.progress-bar {
+     /* Adjust as needed */
+    height: 10px; /* Adjust as needed */
+    background-color: #f0f0f0; /* Background color of the progress bar */
+    border-radius: 5px; /* Optional: to round the corners */
+    margin-top: 5px; /* Adjust as needed */
+    overflow: hidden; /* Hides the overflowing part of the progress */
+}
+
+.progress {
+    height: 100%;
+    background-color: #00ff00; /* Color of the filled portion */
+}
+
+.title-and-result {
+    display: flex;
+    gap: 50px;
 }
