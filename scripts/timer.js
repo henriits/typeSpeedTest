@@ -4,7 +4,7 @@ export const textarea = document.getElementById("inputArea");
 export let timeLeftText = document.querySelector("#time")
 
 let intervalId; // Variable to store the interval ID
-export let timeLeft = 10;
+export let timeLeft = 60;
 export let timePassed = 0;
 
 // Variables tracking input count and errors
