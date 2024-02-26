@@ -77,11 +77,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.key === "Enter") {
             event.preventDefault();
             restartWithCurrentText();
+            // Update storage
+            InputData();
         }
         else if (event.key === "Escape") {
             resetEverything();
+            // Update storage when escape or enter
+            InputData();
         }
     });
+    // Last Storage is called when page is loaded
     InputData();
 
     // Display initial text
