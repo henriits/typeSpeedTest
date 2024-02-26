@@ -18,48 +18,66 @@ export function resetAccuracyAndWPM() {
     errors = 0;
 }
 
-
-
-function updateAccuracyAndWPM() {
-    const text = textarea.value;
-    const typedWords = text.trim().split(/\s+/); // Split the typed text into words
+function countInput(text) {
     const typedCharacters = text.replace(/\s/g, ""); // Remove whitespaces to count characters
-    errors = 0;
-    inputCount = typedCharacters.length; // Update inputCount with the total number of characters
+    inputCount = typedCharacters.length;
+}
 
-    let randomTextSpan = document.querySelectorAll(".letter");
+function updateErrors(text, randomTextSpan) {
+    errors = 0;
     randomTextSpan.forEach((char, index) => {
         let typed = text[index];
         let charText = char.innerText.trim(); // Trim the inner text to remove leading/trailing spaces
         if (typed == null) {
-            char.classList.remove("correct");
-            char.classList.remove("false");
-            char.style.backgroundColor = ""; // Remove any background color
+            clearCharStyles(char);
         } else if (typed === charText || (typed === ' ' && charText === '&nbsp;')) {
-            char.classList.add("correct");
-            char.classList.remove("false");
-            char.style.backgroundColor = ""; // Remove any background color
+            setCharCorrect(char);
         } else if (typed.trim() !== '') { // Check if typed character is not whitespace
-            char.classList.remove("correct");
-            char.classList.add("false");
-            char.style.backgroundColor = ""; // Remove any background color
+            setCharFalse(char);
             errors++;
         }
         // Check if typed character is a space when there's already a character present
         if (/[a-zA-Z]/.test(charText) && typed === ' ') {
-            char.classList.remove("correct");
-            char.classList.add("false");
-            char.style.backgroundColor = ""; // Remove any background color
+            setCharFalse(char);
             errors++;
         }
     });
+}
 
-    // Apply gray background color to the last typed letter
+function clearCharStyles(char) {
+    char.classList.remove("correct");
+    char.classList.remove("false");
+    char.style.backgroundColor = ""; // Remove any background color
+}
+
+function setCharCorrect(char) {
+    char.classList.add("correct");
+    char.classList.remove("false");
+    char.style.backgroundColor = ""; // Remove any background color
+}
+
+function setCharFalse(char) {
+    char.classList.remove("correct");
+    char.classList.add("false");
+    char.style.backgroundColor = ""; // Remove any background color
+}
+
+function applyLastTypedCharStyle(text, randomTextSpan) {
     if (text.trim() !== "" && /[a-zA-Z]/.test(text[text.length - 1])) {
         let lastTypedCharIndex = text.length - 1;
         let lastTypedChar = randomTextSpan[lastTypedCharIndex];
         lastTypedChar.style.backgroundColor = "lightgray";
     }
+}
+
+function updateAccuracyAndWPM() {
+    const text = textarea.value;
+    const typedWords = text.trim().split(/\s+/); // Split the typed text into words
+    const randomTextSpan = document.querySelectorAll(".letter");
+
+    countInput(text);
+    updateErrors(text, randomTextSpan);
+    applyLastTypedCharStyle(text, randomTextSpan);
 
     const accuracy = inputCount > 0 ? Math.round(((inputCount - errors) / inputCount) * 100) : 100;
     localStorage.setItem("accuracy", accuracy);
@@ -72,9 +90,6 @@ function updateAccuracyAndWPM() {
     wpmForGraph.textContent = wordsPerMinute;
     errorsElement.textContent = errors;
 }
-
-
-
 
 export function InputData() {
     textarea.addEventListener("input", updateAccuracyAndWPM);
@@ -89,4 +104,3 @@ export function InputData() {
         previousWPM.textContent = storedWPM;
     }
 }
-
