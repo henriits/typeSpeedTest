@@ -100,25 +100,33 @@ function updateAccuracyAndWPM() {
     wpmForGraph.textContent = wordsPerMinute;
     errorsElement.textContent = errors;
 
-
     updateProgressBar(latestWPMProgress, wordsPerMinute);
-    updateProgressBar(latestAccuracyProgress, accuracy); 
+    updateProgressBar(latestAccuracyProgress, accuracy);
+}
 
+
+function getStoredAcc() {
+    return localStorage.getItem("accuracy")
 
 }
+
+function getStoredWPM() {
+    return localStorage.getItem("wpm")
+}
+
 
 export function InputData() {
     textarea.addEventListener("input", updateAccuracyAndWPM);
 
-    const storedAccuracy = localStorage.getItem("accuracy");
+    const storedAccuracy = getStoredAcc();
     if (storedAccuracy !== null) {
         previousAccuracy.textContent = storedAccuracy;
     }
 
-    const storedWPM = localStorage.getItem("wpm");
+    const storedWPM = getStoredWPM();
     if (storedWPM !== null) {
         previousWPM.textContent = storedWPM;
     }
     updateProgressBar(previousWPMProgress, storedWPM);
-    updateProgressBar(previousAccuracyProgress, storedAccuracy); 
+    updateProgressBar(previousAccuracyProgress, storedAccuracy);
 }
