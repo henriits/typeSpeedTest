@@ -1,8 +1,13 @@
 import { displayRandomLines } from "./textFromApi.js";
-import { minimumLinesOfText, maximumLinesOfText } from './variables.js';
 import { startTimer, resetTimer } from "./timer.js";
-import { InputData } from "./input.js";
-import { previousData } from "./variables.js";
+import { InputData, resetAccuracyAndWPM } from "./input.js";
+
+
+
+// Set how many lines will be displayed
+export let minimumLinesOfText = 5
+export let maximumLinesOfText = 8
+export let previousData = document.getElementById("previous-data")
 
 async function displayText() {
     const text = await displayRandomLines(minimumLinesOfText, maximumLinesOfText);
@@ -12,6 +17,7 @@ async function displayText() {
 
 async function resetEverything() {
     resetTimer();
+    resetAccuracyAndWPM();
     previousData.classList.add("hide-previous")
     document.getElementById("inputArea").value = ""; // Clear the textarea
     await displayText(); // Fetch and display new text
@@ -23,6 +29,7 @@ async function resetEverything() {
 
 async function restartWithCurrentText() {
     resetTimer();
+    resetAccuracyAndWPM();
     previousData.classList.add("hide-previous")
     document.getElementById("inputArea").value = ""; // Clear the textarea
     document.getElementById("inputArea").focus(); // Focus on the textarea
@@ -59,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("resetButton").addEventListener("click", resetEverything);
     document.getElementById("restartButton").addEventListener("click", restartWithCurrentText);
 
-    document.addEventListener("keydown", function(event) {
+    document.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             restartWithCurrentText();

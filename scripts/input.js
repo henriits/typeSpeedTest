@@ -1,12 +1,27 @@
 import { timePassed } from "./timer.js";
-import { textarea, errorsElement, accuracyCorrectText, wordsPerMinuteText, previousWPM, previousAccuracy } from "./variables.js";
+import { textarea } from "./timer.js";
+
+export let previousWPM = document.getElementById("previous-wpm-result")
+export let previousAccuracy = document.getElementById("previous-accuracy-result")
+export const errorsElement = document.getElementById("error");
+export let accuracyCorrectText = document.getElementById("accuracy")
+export let lettersWrongText = document.querySelector("#error")
+export let wordsPerMinuteText = document.getElementById("wpm")
 
 let inputCount = 0;
+let errors = 0;
+
+export function resetAccuracyAndWPM() {
+    inputCount = 0;
+    errors = 0;
+}
+
+
 
 function updateAccuracyAndWPM() {
     const text = textarea.value;
     const textArray = text.split("");
-    let errors = 0;
+
     inputCount++;
 
     let randomTextSpan = document.querySelectorAll(".letter");
