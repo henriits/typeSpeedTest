@@ -5,8 +5,8 @@ import { InputData, resetAccuracyAndWPM } from "./input.js";
 
 
 // Set how many lines will be displayed
-export let minimumLinesOfText = 5
-export let maximumLinesOfText = 8
+export let minimumLinesOfText = 8
+export let maximumLinesOfText = 12
 export let previousData = document.getElementById("previous-data")
 
 async function displayText() {

@@ -43,10 +43,17 @@ function updateAccuracyAndWPM() {
             char.style.backgroundColor = ""; // Remove any background color
             errors++;
         }
+        // Check if typed character is a space when there's already a character present
+        if (/[a-zA-Z]/.test(charText) && typed === ' ') {
+            char.classList.remove("correct");
+            char.classList.add("false");
+            char.style.backgroundColor = ""; // Remove any background color
+            errors++;
+        }
     });
 
-    // Apply gray background color to the last typed character
-    if (text.length > 0) {
+    // Apply gray background color to the last typed letter
+    if (text.trim() !== "" && /[a-zA-Z]/.test(text[text.length - 1])) {
         let lastTypedCharIndex = text.length - 1;
         let lastTypedChar = randomTextSpan[lastTypedCharIndex];
         lastTypedChar.style.backgroundColor = "lightgray";
