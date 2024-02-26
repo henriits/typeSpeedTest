@@ -38,12 +38,13 @@ export async function displayRandomLines(minLineCount, maxLineCount) {
                 // For whitespace characters, create a space div
                 letterSpan.innerHTML = '&nbsp;';
             } else {
-                // For non-whitespace characters, set textContent
-                letterSpan.textContent = line[j];
+                // For non-whitespace characters, set textContent to lowercase
+                letterSpan.textContent = line[j].toLowerCase();
             }
             container.appendChild(letterSpan);
         }
     }
+    
 }
 
 
