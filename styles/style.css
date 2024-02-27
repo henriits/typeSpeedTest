@@ -143,3 +143,7 @@ body {
     display: flex;
     gap: 50px;
 }
+
+p {
+    padding: 15px;
+}
