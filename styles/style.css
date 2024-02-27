@@ -47,7 +47,6 @@ body {
 .data-output {
     color: #1E5128;
     font-size: 1.2rem;
-    
 }
 
 .button-container {
@@ -69,11 +68,11 @@ body {
 }
 
 .correct {
-    color: #4CAF50; /* Green color for correct */
+    color: #4CAF50;
 }
 
 .false {
-    color: #FF5252; /* Red color for false */
+    color: #FF5252;
 }
 
 .previous-container {
@@ -90,7 +89,7 @@ body {
 
 .graph-content {
     flex-grow: 1;
-    margin-left: 10px; /* Adjust as needed */
+    margin-left: 10px;
 }
 
 
@@ -102,10 +101,10 @@ body {
     margin-top: 20px;
 }
 
-/* Move the input area away, but keep the functionality */
+
 #inputArea {
     position: absolute;
-    left: -9999px;
+    left: -9999px; /* Move the input area away, but keep the functionality */
     opacity: 0;
 }
 
@@ -128,12 +127,11 @@ body {
 }
 
 .progress-bar {
-     /* Adjust as needed */
-    height: 10px; /* Adjust as needed */
+    height: 10px;
     background-color: #f0f0f0; /* Background color of the progress bar */
-    border-radius: 5px; /* Optional: to round the corners */
-    margin-top: 5px; /* Adjust as needed */
-    overflow: hidden; /* Hides the overflowing part of the progress */
+    border-radius: 5px;
+    margin-top: 5px;
+    overflow: hidden;
 }
 
 .progress {

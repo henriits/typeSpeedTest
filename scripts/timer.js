@@ -3,7 +3,7 @@ import { previousData } from "./main.js";
 export const textarea = document.getElementById("inputArea");
 export let timeLeftText = document.querySelector("#time")
 
-let intervalId; // Variable to store the interval ID
+let intervalId;
 export let timeLeft = 60;
 export let timePassed = 0;
 
@@ -17,15 +17,13 @@ export function updateTimer() {
         timePassed++;
         timeLeftText.textContent = timeLeft;
     } else {
-        clearInterval(intervalId); // Clear the interval
-        timeLeftText.textContent = "Timer has ended"; // Update the text content
-        console.log("Timer has ended");
+        clearInterval(intervalId);
+        timeLeftText.textContent = "Timer has ended";
         textarea.disabled = true // Disable textarea when timer runs out
         previousData.classList.remove("hide-previous")
     }
 }
 
-// Function to start the timer and store the interval ID
 export function startTimer() {
     intervalId = setInterval(updateTimer, 1000);
 }

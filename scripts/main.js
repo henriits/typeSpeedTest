@@ -6,7 +6,7 @@ import { InputData, resetAccuracyAndWPM } from "./input.js";
 
 // Set how many lines will be displayed
 export let minimumLinesOfText = 8
-export let maximumLinesOfText = 12
+export let maximumLinesOfText = 15
 export let previousData = document.getElementById("previous-data")
 
 async function displayText() {
@@ -31,10 +31,10 @@ async function restartWithCurrentText() {
     resetTimer();
     resetAccuracyAndWPM();
     previousData.classList.add("hide-previous")
-    document.getElementById("inputArea").value = ""; // Clear the textarea
-    document.getElementById("inputArea").focus(); // Focus on the textarea
+    document.getElementById("inputArea").value = "";
+    document.getElementById("inputArea").focus();
 
-    // Remove .letter classes from all elements
+    // Remove added classes from all elements
     let letters = document.querySelectorAll(".letter");
     letters.forEach(letter => {
         letter.classList.remove("correct");
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // When clicking on the text container, will be focused on input area
     const letterContainer = document.querySelector(".letter-divs");
-    letterContainer.addEventListener("click", function() {
+    letterContainer.addEventListener("click", function () {
         document.getElementById("inputArea").focus();
     });
 
@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.key === "Enter") {
             event.preventDefault();
             restartWithCurrentText();
-            // Update storage
             InputData();
         }
         else if (event.key === "Escape") {
@@ -88,7 +87,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     // Last Storage is called when page is loaded
     InputData();
-
-    // Display initial text
     displayText();
 });

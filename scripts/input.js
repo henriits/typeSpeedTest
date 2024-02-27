@@ -1,17 +1,13 @@
 import { timePassed } from "./timer.js";
 import { textarea } from "./timer.js";
 
-export let previousWPM = document.getElementById("previous-wpm-result")
-export let previousAccuracy = document.getElementById("previous-accuracy-result")
-export const errorsElement = document.getElementById("error");
-export let accuracyCorrectText = document.getElementById("accuracy")
-export let lettersWrongText = document.querySelector("#error")
-export let wordsPerMinuteText = document.getElementById("wpm")
-export let wpmForGraph = document.getElementById("wpmForGraph")
-export let accuracyForGraph = document.getElementById("accuracyForGraph")
-
-
-
+const previousWPM = document.getElementById("previous-wpm-result")
+const previousAccuracy = document.getElementById("previous-accuracy-result")
+const errorsElement = document.getElementById("error");
+const accuracyCorrectText = document.getElementById("accuracy")
+const wordsPerMinuteText = document.getElementById("wpm")
+const wpmForGraph = document.getElementById("wpmForGraph")
+const accuracyForGraph = document.getElementById("accuracyForGraph")
 const latestWPMProgress = document.getElementById("latest-wpm-progress");
 const latestAccuracyProgress = document.getElementById("latest-accuracy-progress");
 const previousWPMProgress = document.getElementById("previous-wpm-progress");
@@ -26,7 +22,7 @@ export function resetAccuracyAndWPM() {
 }
 
 function countInput(text) {
-    const typedCharacters = text.replace(/\s/g, ""); // Remove whitespaces to count characters
+    const typedCharacters = text.replace(/\s/g, ""); // Remove white spaces to count characters
     inputCount = typedCharacters.length;
 }
 
@@ -60,13 +56,13 @@ function clearCharStyles(char) {
 function setCharCorrect(char) {
     char.classList.add("correct");
     char.classList.remove("false");
-    char.style.backgroundColor = ""; // Remove any background color
+    char.style.backgroundColor = "";
 }
 
 function setCharFalse(char) {
     char.classList.remove("correct");
     char.classList.add("false");
-    char.style.backgroundColor = ""; // Remove any background color
+    char.style.backgroundColor = "";
 }
 
 function applyLastTypedCharStyle(text, randomTextSpan) {
