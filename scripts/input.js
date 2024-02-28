@@ -85,12 +85,17 @@ function updateAccuracyAndWPM() {
     updateErrors(text, randomTextSpan);
     applyLastTypedCharStyle(text, randomTextSpan);
 
-    const accuracy = inputCount > 0 ? Math.round(((inputCount - errors) / inputCount) * 100) : 100;
+    // Calculate accuracy
+    let accuracy = inputCount > 0 ? Math.round(((inputCount - errors) / inputCount) * 100) : 100;
+    accuracy = Math.max(0, accuracy); // Ensure accuracy is not negative
     localStorage.setItem("accuracy", accuracy);
     accuracyCorrectText.textContent = accuracy;
     accuracyForGraph.textContent = accuracy;
 
-    const wordsPerMinute = Math.round((typedWords.length / timePassed) * 60);
+    // Calculate words per minute
+    let wordsPerMinute = Math.round((typedWords.length / timePassed) * 60);
+    wordsPerMinute = Math.min(200, wordsPerMinute); // Clamp WPM to a maximum of 200
+    wordsPerMinute = Math.max(0, wordsPerMinute); // Ensure WPM is not negative
     localStorage.setItem("wpm", wordsPerMinute);
     wordsPerMinuteText.textContent = wordsPerMinute;
     wpmForGraph.textContent = wordsPerMinute;
@@ -99,6 +104,7 @@ function updateAccuracyAndWPM() {
     updateProgressBar(latestWPMProgress, wordsPerMinute);
     updateProgressBar(latestAccuracyProgress, accuracy);
 }
+
 
 
 function getStoredAcc() {
