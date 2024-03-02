@@ -22,36 +22,52 @@ export function resetAccuracyAndWPM() {
     errors = 0;
 }
 
-function countInput(text) {
-    const typedCharacters = text.replace(/\s/g, ""); // Remove white spaces to count characters
-    inputCount = typedCharacters.length;
-}
+
 
 function updateErrors(text, randomTextSpan) {
     errors = 0;
     randomTextSpan.forEach((char, index) => {
         let typed = text[index];
-        let charText = char.innerText.trim(); // Trim the inner text to remove leading/trailing spaces
+        let charText = char.innerText.trim();
         if (typed == null) {
             clearCharStyles(char);
         } else if (typed === charText || (typed === ' ' && charText === '&nbsp;')) {
             setCharCorrect(char);
-        } else if (typed.trim() !== '') { // Check if typed character is not whitespace
+        } else if (typed.trim() !== '') {
             setCharFalse(char);
             errors++;
         }
-        // Check if typed character is a space when there's already a character present
         if (/[a-zA-Z]/.test(charText) && typed === ' ') {
             setCharFalse(char);
             errors++;
         }
+        if (index === inputCount) {
+            char.classList.add("next-character");
+        } else {
+            char.classList.remove("next-character");
+        }
     });
+
+    inputCount = text.length;
 }
+
+textarea.addEventListener("keydown", (event) => {
+    if (event.key === "Backspace" && inputCount > 0) {
+        inputCount--;
+        updateErrors(textarea.value, document.querySelectorAll(".letter"));
+    }
+});
+
+textarea.addEventListener("input", (event) => {
+    updateErrors(event.target.value, document.querySelectorAll(".letter"));
+});
+
+
 
 function clearCharStyles(char) {
     char.classList.remove("correct");
     char.classList.remove("false");
-    char.style.backgroundColor = ""; // Remove any background color
+    char.style.backgroundColor = "";
 }
 
 function setCharCorrect(char) {
@@ -66,13 +82,7 @@ function setCharFalse(char) {
     char.style.backgroundColor = "";
 }
 
-function applyLastTypedCharStyle(text, randomTextSpan) {
-    if (text.trim() !== "" && /[a-zA-Z]/.test(text[text.length - 1])) {
-        let lastTypedCharIndex = text.length - 1;
-        let lastTypedChar = randomTextSpan[lastTypedCharIndex];
-        lastTypedChar.style.backgroundColor = "lightgray";
-    }
-}
+
 function updateProgressBar(progressBar, percentage) {
     progressBar.style.width = percentage + "%";
 }
@@ -82,9 +92,9 @@ function updateAccuracyAndWPM() {
     const typedWords = text.trim().split(/\s+/); // Split the typed text into words
     const randomTextSpan = document.querySelectorAll(".letter");
 
-    countInput(text);
+
     updateErrors(text, randomTextSpan);
-    applyLastTypedCharStyle(text, randomTextSpan);
+
 
     // Calculate accuracy
     let accuracy = inputCount > 0 ? Math.round(((inputCount - errors) / inputCount) * 100) : 100;

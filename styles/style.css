@@ -75,6 +75,10 @@ body {
     color: #FF5252;
 }
 
+.next-character {
+    background-color: #686868;
+}
+
 .previous-container {
     display: flex;
     flex-direction: column;
