@@ -1,4 +1,4 @@
-import { previousData } from "./main.js";
+import { previousData } from "./startAndDsiplay.js";
 
 export const textarea = document.getElementById("inputArea");
 export let timeLeftText = document.querySelector("#time")
