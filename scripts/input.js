@@ -31,16 +31,20 @@ function updateErrors(text, randomTextSpan) {
         let charText = char.innerText.trim();
         if (typed == null) {
             clearCharStyles(char);
-        } else if (typed === charText || (typed === ' ' && charText === '&nbsp;')) {
+        } else if (typed === charText || (typed === ' ' && charText === '&nbsp;') || (/[^\w\s]/.test(charText) && typed === charText)) {
             setCharCorrect(char);
         } else if (typed.trim() !== '') {
             setCharFalse(char);
             errors++;
         }
-        if (/[a-zA-Z]/.test(charText) && typed === ' ') {
+        if ((/[a-zA-Z"']/).test(charText) && typed === ' ') {
             setCharFalse(char);
             errors++;
         }
+        if (/[\W_]/.test(charText) && typed === ' ') {
+            setCharFalse(char);
+            errors++;
+        } 
         if (index === inputCount) {
             char.classList.add("next-character");
         } else {
@@ -50,6 +54,7 @@ function updateErrors(text, randomTextSpan) {
 
     inputCount = text.length;
 }
+
 
 textarea.addEventListener("keydown", (event) => {
     if (event.key === "Backspace" && inputCount > 0) {
