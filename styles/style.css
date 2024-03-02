@@ -115,12 +115,13 @@ body {
 .btn {
     border-radius: 30px;
     width: 125px;
-    background-color: #fff;
+    background-color: #ffffff;
     color: #4CAF50;
 }
 
 .btn:hover {
     color:#D8E9A8;
+    cursor: pointer;
 
 }
 
