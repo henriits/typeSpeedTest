@@ -1,4 +1,4 @@
-import { InputData } from "./input.js";
+import { inputData } from "./input.js";
 import { resetEverything, restartWithCurrentText } from "./reset.js";
 import { startTimerOnFirstKeyPress, displayText } from "./startAndDisplay.js";
 
@@ -18,13 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.key === "Enter") {
             event.preventDefault();
             restartWithCurrentText();
-            InputData();
+            inputData();
         }
         else if (event.key === "Escape") {
             resetEverything();
-            InputData();
+            inputData();
         }
     });
-    InputData();
+    inputData();
     displayText();
 });

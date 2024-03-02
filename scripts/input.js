@@ -133,7 +133,7 @@ function getStoredWPM() {
 }
 
 
-export function InputData() {
+export function inputData() {
     textarea.addEventListener("input", updateAccuracyAndWPM);
 
     const storedAccuracy = getStoredAcc();
