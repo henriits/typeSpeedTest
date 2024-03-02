@@ -1,6 +1,6 @@
 import { resetTimer } from "./timer.js";
 import { resetAccuracyAndWPM } from "./input.js";
-import { previousData, displayText, startTimerOnFirstKeyPress } from "./startAndDsiplay.js";
+import { previousData, displayText, startTimerOnFirstKeyPress } from "./startAndDisplay.js";
 
 export async function resetEverything() {
     resetTimer();

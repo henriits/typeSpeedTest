@@ -1,6 +1,6 @@
 import { InputData } from "./input.js";
 import { resetEverything, restartWithCurrentText } from "./reset.js";
-import { startTimerOnFirstKeyPress, displayText } from "./startAndDsiplay.js";
+import { startTimerOnFirstKeyPress, displayText } from "./startAndDisplay.js";
 
 
 document.addEventListener("DOMContentLoaded", () => {
