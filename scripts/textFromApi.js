@@ -1,4 +1,4 @@
-const container = document.getElementById("lines-go-here");
+const container = document.querySelector("#lines-go-here");
 
 async function getRandomAuthor() {
     try {

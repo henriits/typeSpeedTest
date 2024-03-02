@@ -3,9 +3,9 @@ import { startTimer } from "./timer.js";
 
 
 
-export let minimumLinesOfText = 8;
-export let maximumLinesOfText = 15;
-export let previousData = document.getElementById("previous-data");
+export const minimumLinesOfText = 8;
+export const maximumLinesOfText = 15;
+export const previousData = document.querySelector("#previous-data");
 
 export async function displayText() {
     const text = await displayRandomLines(minimumLinesOfText, maximumLinesOfText);

@@ -1,7 +1,7 @@
 import { previousData } from "./startAndDisplay.js";
 
-export const textarea = document.getElementById("inputArea");
-export let timeLeftText = document.querySelector("#time")
+export const textarea = document.querySelector("#inputArea");
+export const timeLeftText = document.querySelector("#time")
 
 let intervalId;
 export let timeLeft = 60;

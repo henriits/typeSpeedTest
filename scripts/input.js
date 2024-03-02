@@ -1,17 +1,18 @@
 import { timePassed } from "./timer.js";
 import { textarea } from "./timer.js";
 
-const previousWPM = document.getElementById("previous-wpm-result")
-const previousAccuracy = document.getElementById("previous-accuracy-result")
-const errorsElement = document.getElementById("error");
-const accuracyCorrectText = document.getElementById("accuracy")
-const wordsPerMinuteText = document.getElementById("wpm")
-const wpmForGraph = document.getElementById("wpmForGraph")
-const accuracyForGraph = document.getElementById("accuracyForGraph")
-const latestWPMProgress = document.getElementById("latest-wpm-progress");
-const latestAccuracyProgress = document.getElementById("latest-accuracy-progress");
-const previousWPMProgress = document.getElementById("previous-wpm-progress");
-const previousAccuracyProgress = document.getElementById("previous-accuracy-progress");
+const previousWPM = document.querySelector("#previous-wpm-result");
+const previousAccuracy = document.querySelector("#previous-accuracy-result");
+const errorsElement = document.querySelector("#error");
+const accuracyCorrectText = document.querySelector("#accuracy");
+const wordsPerMinuteText = document.querySelector("#wpm");
+const wpmForGraph = document.querySelector("#wpmForGraph");
+const accuracyForGraph = document.querySelector("#accuracyForGraph");
+const latestWPMProgress = document.querySelector("#latest-wpm-progress");
+const latestAccuracyProgress = document.querySelector("#latest-accuracy-progress");
+const previousWPMProgress = document.querySelector("#previous-wpm-progress");
+const previousAccuracyProgress = document.querySelector("#previous-accuracy-progress");
+
 
 let inputCount = 0;
 let errors = 0;
