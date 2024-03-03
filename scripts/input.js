@@ -145,6 +145,20 @@ export function saveResult(wpm, acc) {
 }
 
 
+export function displayResults() {
+    let results = JSON.parse(localStorage.getItem('typingResults')) || [];
+
+    // Reverse the order of results array
+    results.reverse();
+
+    // Display results however you want, for example, in a list
+    results.forEach((result, index) => {
+        // Calculate the adjusted index based on the reversed order
+        let adjustedIndex = results.length - index;
+
+        console.log(`Result ${adjustedIndex}: WPM - ${result.wpm}, ACC - ${result.acc}`);
+    });
+}
 
 
 

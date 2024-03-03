@@ -1,5 +1,5 @@
 import { previousData } from "./startAndDisplay.js";
-import { updateAccuracyAndWPM, saveResult } from "./input.js";
+import { updateAccuracyAndWPM, saveResult, displayResults } from "./input.js";
 import { wordsPerMinuteText,accuracyCorrectText } from "./input.js";
 
 export const textarea = document.querySelector("#inputArea");
@@ -25,7 +25,7 @@ export function updateTimer() {
         textarea.disabled = true // Disable textarea when timer runs out
         previousData.classList.remove("hide-previous")
         saveResult(parseInt(wordsPerMinuteText.textContent), parseInt(accuracyCorrectText.textContent));
-        
+        displayResults();
     }
 }
 
