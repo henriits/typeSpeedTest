@@ -1,5 +1,4 @@
-import { timePassed } from "./timer.js";
-import { textarea } from "./timer.js";
+import { timePassed, textarea} from "./timer.js";
 
 export const errorsElement = document.querySelector("#error");
 export const accuracyCorrectText = document.querySelector("#accuracy");
@@ -129,25 +128,48 @@ export function saveResult(wpm, acc) {
 }
 
 
-export function displayResults() {
+
+
+export function displayResultsInTable() {
     let results = JSON.parse(localStorage.getItem('typingResults')) || [];
-
     results.reverse();
-
     const previousDataContainer = document.getElementById('previous-data');
     previousDataContainer.innerHTML = '';
+    const table = document.createElement('table');
+    table.classList.add('typing-results-table');
+    const headerRow = document.createElement('tr');
+    const headerCells = ['Result', 'WPM', 'ACC', 'Date'];
+    headerCells.forEach(cellText => {
+        const cell = document.createElement('th');
+        cell.textContent = cellText;
+        headerRow.appendChild(cell);
+    });
+    table.appendChild(headerRow);
 
     results.forEach((result, index) => {
         let adjustedIndex = results.length - index;
         let formattedDateTime = formatDateTime(result.dateTime);
 
-        let resultDiv = document.createElement('div');
-        resultDiv.classList.add('result');
-        resultDiv.innerHTML = `Result ${adjustedIndex}: WPM - ${result.wpm}, ACC - ${result.acc}, Date - ${formattedDateTime}`;
-
-        previousDataContainer.appendChild(resultDiv);
+        const row = document.createElement('tr');
+        const cells = [
+            adjustedIndex,
+            result.wpm,
+            result.acc,
+            formattedDateTime
+        ];
+        cells.forEach(cellText => {
+            const cell = document.createElement('td');
+            cell.textContent = cellText;
+            row.appendChild(cell);
+        });
+        table.appendChild(row);
     });
+
+    previousDataContainer.appendChild(table);
 }
+
+
+
 
 function formatDateTime(dateTimeString) {
     const dateTime = new Date(dateTimeString);
