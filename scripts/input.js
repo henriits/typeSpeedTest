@@ -119,7 +119,6 @@ export function updateAccuracyAndWPM() {
 }
 
 
-
 export function saveResult(wpm, acc) {
     let results = JSON.parse(localStorage.getItem('typingResults')) || [];
     const currentDate = new Date();
@@ -128,8 +127,6 @@ export function saveResult(wpm, acc) {
 
     localStorage.setItem('typingResults', JSON.stringify(results));
 }
-
-
 
 
 export function displayResultsInTable() {
@@ -169,8 +166,6 @@ export function displayResultsInTable() {
 
     previousDataContainer.appendChild(table);
 }
-
-
 
 
 function formatDateTime(dateTimeString) {
