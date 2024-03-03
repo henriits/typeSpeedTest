@@ -5,8 +5,9 @@ import { updateAccuracyAndWPM, saveResult, displayResultsInTable, wordsPerMinute
 export const textarea = document.querySelector("#inputArea");
 export const timeLeftText = document.querySelector("#time")
 
+export let testTime = 60;
 let intervalId;
-export let timeLeft = 10;
+let timeLeft = testTime;
 export let timePassed = 1;
 
 let inputCount = 0;
@@ -35,7 +36,7 @@ export function startTimer() {
 
 export function resetTimer() {
     clearInterval(intervalId);
-    timeLeft = 10;
+    timeLeft = testTime;
     timePassed = 1;
     timeLeftText.textContent = timeLeft;
     textarea.disabled = false

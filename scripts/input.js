@@ -1,4 +1,4 @@
-import { timePassed, textarea} from "./timer.js";
+import { timePassed, textarea, testTime} from "./timer.js";
 import { previousData } from "./startAndDisplay.js";
 import { restartWithCurrentText } from "./reset.js";
 
@@ -91,7 +91,7 @@ function updateAccuracy(accuracy) {
 }
 
 function calculateWordsPerMinute(typedWords, timePassed) {
-    let wordsPerMinute = Math.round((typedWords.length / timePassed) * 60);
+    let wordsPerMinute = Math.round((typedWords.length / timePassed) * parseInt(testTime));
     wordsPerMinute = Math.max(0, wordsPerMinute);
     return wordsPerMinute;
 }
