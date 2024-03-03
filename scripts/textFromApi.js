@@ -29,7 +29,7 @@ async function getRandomLinesFromAuthor(author, lineCount) {
 
 export async function displayRandomLines(minLineCount, maxLineCount) {
     try {
-        container.innerHTML = "Loading..."; // Display loading message
+        container.innerHTML = "Loading...";
 
         const randomAuthor = await getRandomAuthor();
         let randomLines = await getRandomLinesFromAuthor(randomAuthor, maxLineCount);
@@ -38,7 +38,7 @@ export async function displayRandomLines(minLineCount, maxLineCount) {
             randomLines = await getRandomLinesFromAuthor(randomAuthor, minLineCount);
         }
 
-        container.innerHTML = ""; // Clear loading message
+        container.innerHTML = "";
 
         for (let i = 0; i < randomLines.length; i++) {
             const line = randomLines[i];
@@ -55,7 +55,6 @@ export async function displayRandomLines(minLineCount, maxLineCount) {
         }
     } catch (error) {
         console.error("Error displaying random lines:", error);
-        container.innerHTML = "Error fetching data"; // Display error message
     }
 }
 
