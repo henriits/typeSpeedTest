@@ -131,18 +131,7 @@ body {
     color: #fff;
 }
 
-.progress-bar {
-    height: 10px;
-    background-color: #f0f0f0; /* Background color of the progress bar */
-    border-radius: 5px;
-    margin-top: 5px;
-    overflow: hidden;
-}
 
-.progress {
-    height: 100%;
-    background-color: #00ff00; /* Color of the filled portion */
-}
 
 .title-and-result {
     display: flex;

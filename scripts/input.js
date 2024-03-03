@@ -1,17 +1,12 @@
 import { timePassed } from "./timer.js";
 import { textarea } from "./timer.js";
 
-const previousWPM = document.querySelector("#previous-wpm-result");
-const previousAccuracy = document.querySelector("#previous-accuracy-result");
+
 const errorsElement = document.querySelector("#error");
 const accuracyCorrectText = document.querySelector("#accuracy");
 const wordsPerMinuteText = document.querySelector("#wpm");
-const wpmForGraph = document.querySelector("#wpmForGraph");
-const accuracyForGraph = document.querySelector("#accuracyForGraph");
-const latestWPMProgress = document.querySelector("#latest-wpm-progress");
-const latestAccuracyProgress = document.querySelector("#latest-accuracy-progress");
-const previousWPMProgress = document.querySelector("#previous-wpm-progress");
-const previousAccuracyProgress = document.querySelector("#previous-accuracy-progress");
+
+
 
 
 let inputCount = 0;
@@ -88,10 +83,6 @@ function setCharFalse(char) {
 }
 
 
-function updateProgressBar(progressBar, percentage) {
-    progressBar.style.width = percentage + "%";
-}
-
 // Function to calculate accuracy
 function calculateAccuracy(inputCount, errors) {
     let accuracy = inputCount > 0 ? Math.round(((inputCount - errors) / inputCount) * 100) : 100;
@@ -141,36 +132,15 @@ export function updateAccuracyAndWPM() {
 
     updateErrorsCount(errors);
 
-    updateProgressBar(latestWPMProgress, wordsPerMinute);
-    updateProgressBar(latestAccuracyProgress, accuracy);
 }
 
 
 
 
 
-function getStoredAcc() {
-    return localStorage.getItem("accuracy")
-
-}
-
-function getStoredWPM() {
-    return localStorage.getItem("wpm")
-}
 
 
 export function inputData() {
     textarea.addEventListener("input", updateAccuracyAndWPM);
 
-    const storedAccuracy = getStoredAcc();
-    if (storedAccuracy !== null) {
-        previousAccuracy.textContent = storedAccuracy;
-    }
-
-    const storedWPM = getStoredWPM();
-    if (storedWPM !== null) {
-        previousWPM.textContent = storedWPM;
-    }
-    updateProgressBar(previousWPMProgress, storedWPM);
-    updateProgressBar(previousAccuracyProgress, storedAccuracy);
 }
