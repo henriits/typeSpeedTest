@@ -92,33 +92,60 @@ function updateProgressBar(progressBar, percentage) {
     progressBar.style.width = percentage + "%";
 }
 
+// Function to calculate accuracy
+function calculateAccuracy(inputCount, errors) {
+    let accuracy = inputCount > 0 ? Math.round(((inputCount - errors) / inputCount) * 100) : 100;
+    accuracy = Math.max(0, accuracy); // Ensure accuracy is not negative
+    return accuracy;
+}
+
+// Function to update accuracy in UI and localStorage
+function updateAccuracy(accuracy) {
+    localStorage.setItem("accuracy", accuracy);
+    accuracyCorrectText.textContent = accuracy;
+    accuracyForGraph.textContent = accuracy;
+}
+
+// Function to calculate words per minute
+function calculateWordsPerMinute(typedWords, timePassed) {
+    let wordsPerMinute = Math.round((typedWords.length / timePassed) * 60);
+    wordsPerMinute = Math.max(0, wordsPerMinute); // Ensure WPM is not negative
+    return wordsPerMinute;
+}
+
+// Function to update words per minute in UI and localStorage
+function updateWordsPerMinute(wordsPerMinute) {
+    localStorage.setItem("wpm", wordsPerMinute);
+    wordsPerMinuteText.textContent = wordsPerMinute;
+    wpmForGraph.textContent = wordsPerMinute;
+}
+
+// Function to update error count in UI
+function updateErrorsCount(errors) {
+    errorsElement.textContent = errors;
+}
+
+// Refactored main function
 export function updateAccuracyAndWPM() {
     const text = textarea.value;
     const typedWords = text.trim().split(/\s+/); // Split the typed text into words
     const randomTextSpan = document.querySelectorAll(".letter");
 
-
     updateErrors(text, randomTextSpan);
 
+    const accuracy = calculateAccuracy(inputCount, errors);
+    updateAccuracy(accuracy);
 
-    // Calculate accuracy
-    let accuracy = inputCount > 0 ? Math.round(((inputCount - errors) / inputCount) * 100) : 100;
-    accuracy = Math.max(0, accuracy); // Ensure accuracy is not negative
-    localStorage.setItem("accuracy", accuracy);
-    accuracyCorrectText.textContent = accuracy;
-    accuracyForGraph.textContent = accuracy;
+    const wordsPerMinute = calculateWordsPerMinute(typedWords, timePassed);
+    updateWordsPerMinute(wordsPerMinute);
 
-    // Calculate words per minute
-    let wordsPerMinute = Math.round((typedWords.length / timePassed) * 60);
-    wordsPerMinute = Math.max(0, wordsPerMinute); // Ensure WPM is not negative
-    localStorage.setItem("wpm", wordsPerMinute);
-    wordsPerMinuteText.textContent = wordsPerMinute;
-    wpmForGraph.textContent = wordsPerMinute;
-    errorsElement.textContent = errors;
+    updateErrorsCount(errors);
 
     updateProgressBar(latestWPMProgress, wordsPerMinute);
     updateProgressBar(latestAccuracyProgress, accuracy);
 }
+
+
 
 
 
