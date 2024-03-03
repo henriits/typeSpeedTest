@@ -6,18 +6,18 @@ export async function resetEverything() {
     resetTimer();
     resetAccuracyAndWPM();
     previousData.classList.add("hide-previous");
-    document.getElementById("inputArea").value = "";
+    document.querySelector("#inputArea").value = "";
     await displayText();
-    document.getElementById("inputArea").focus();
+    document.querySelector("#inputArea").focus();
 
-    document.getElementById("inputArea").addEventListener("input", startTimerOnFirstKeyPress);
+    document.querySelector("#inputArea").addEventListener("input", startTimerOnFirstKeyPress);
 }
 export async function restartWithCurrentText() {
     resetTimer();
     resetAccuracyAndWPM();
     previousData.classList.add("hide-previous");
-    document.getElementById("inputArea").value = "";
-    document.getElementById("inputArea").focus();
+    document.querySelector("#inputArea").value = "";
+    document.querySelector("#inputArea").focus();
 
 
     let letters = document.querySelectorAll(".letter");
@@ -27,5 +27,5 @@ export async function restartWithCurrentText() {
         letter.classList.remove("current");
         letter.style.backgroundColor = "";
     });
-    document.getElementById("inputArea").addEventListener("input", startTimerOnFirstKeyPress);
+    document.querySelector("#inputArea").addEventListener("input", startTimerOnFirstKeyPress);
 }

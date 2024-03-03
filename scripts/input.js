@@ -135,7 +135,7 @@ export function saveResult(wpm, acc) {
 export function displayResultsInTable() {
     let results = JSON.parse(localStorage.getItem('typingResults')) || [];
     results.reverse();
-    const previousDataContainer = document.getElementById('previous-data');
+    const previousDataContainer = document.querySelector('#previous-data');
     previousDataContainer.innerHTML = '';
     const table = document.createElement('table');
     table.classList.add('typing-results-table');
@@ -194,5 +194,5 @@ function deleteData() {
 }
 
 
-const deleteDataButton = document.getElementById('deleteDataButton');
+const deleteDataButton = document.querySelector('#deleteDataButton');
 deleteDataButton.addEventListener('click', deleteData);

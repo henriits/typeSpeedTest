@@ -15,5 +15,5 @@ export async function displayText() {
 
 export function startTimerOnFirstKeyPress() {
     startTimer();
-    document.getElementById("inputArea").removeEventListener("input", startTimerOnFirstKeyPress);
+    document.querySelector("#inputArea").removeEventListener("input", startTimerOnFirstKeyPress);
 }

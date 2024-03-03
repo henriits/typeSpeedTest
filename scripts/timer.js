@@ -43,8 +43,8 @@ export function resetTimer() {
 
     inputCount = 0;
     errors = 0;
-    document.getElementById("inputArea").value = "";
-    document.getElementById("error").textContent = "0";
-    document.getElementById("accuracy").textContent = "0";
-    document.getElementById("wpm").textContent = "0";
+    document.querySelector("#inputArea").value = "";
+    document.querySelector("#error").textContent = "0";
+    document.querySelector("#accuracy").textContent = "0";
+    document.querySelector("#wpm").textContent = "0";
 }
