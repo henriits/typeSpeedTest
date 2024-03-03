@@ -92,7 +92,7 @@ function updateProgressBar(progressBar, percentage) {
     progressBar.style.width = percentage + "%";
 }
 
-function updateAccuracyAndWPM() {
+export function updateAccuracyAndWPM() {
     const text = textarea.value;
     const typedWords = text.trim().split(/\s+/); // Split the typed text into words
     const randomTextSpan = document.querySelectorAll(".letter");

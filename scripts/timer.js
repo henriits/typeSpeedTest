@@ -1,4 +1,5 @@
 import { previousData } from "./startAndDisplay.js";
+import { updateAccuracyAndWPM } from "./input.js";
 
 export const textarea = document.querySelector("#inputArea");
 export const timeLeftText = document.querySelector("#time")
@@ -16,6 +17,7 @@ export function updateTimer() {
         timeLeft--;
         timePassed++;
         timeLeftText.textContent = timeLeft;
+        updateAccuracyAndWPM();
     } else {
         clearInterval(intervalId);
         timeLeftText.textContent = "Timer has ended";
