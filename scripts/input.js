@@ -110,7 +110,6 @@ export function updateAccuracyAndWPM() {
 
     // Calculate words per minute
     let wordsPerMinute = Math.round((typedWords.length / timePassed) * 60);
-    wordsPerMinute = Math.min(200, wordsPerMinute); // Clamp WPM to a maximum of 200
     wordsPerMinute = Math.max(0, wordsPerMinute); // Ensure WPM is not negative
     localStorage.setItem("wpm", wordsPerMinute);
     wordsPerMinuteText.textContent = wordsPerMinute;

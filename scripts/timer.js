@@ -6,7 +6,7 @@ export const timeLeftText = document.querySelector("#time")
 
 let intervalId;
 export let timeLeft = 60;
-export let timePassed = 0;
+export let timePassed = 1;
 
 // Variables tracking input count and errors
 let inputCount = 0;
@@ -34,7 +34,7 @@ export function startTimer() {
 export function resetTimer() {
     clearInterval(intervalId);
     timeLeft = 60;
-    timePassed = 0;
+    timePassed = 1;
     timeLeftText.textContent = timeLeft;
     textarea.disabled = false
 
