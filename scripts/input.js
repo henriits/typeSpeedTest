@@ -1,4 +1,6 @@
 import { timePassed, textarea} from "./timer.js";
+import { previousData } from "./startAndDisplay.js";
+import { restartWithCurrentText } from "./reset.js";
 
 export const errorsElement = document.querySelector("#error");
 export const accuracyCorrectText = document.querySelector("#accuracy");
@@ -184,11 +186,13 @@ export function inputData() {
 }
 
 
-// Function to delete WPM and ACC data from localStorage
+
 function deleteData() {
+    restartWithCurrentText();
     localStorage.removeItem('typingResults');
+    previousData.classList.add("hide-previous");
 }
 
-// Add event listener to the delete data button
+
 const deleteDataButton = document.getElementById('deleteDataButton');
 deleteDataButton.addEventListener('click', deleteData);
