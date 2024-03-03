@@ -9,7 +9,6 @@ let intervalId;
 export let timeLeft = 10;
 export let timePassed = 1;
 
-// Variables tracking input count and errors
 let inputCount = 0;
 let errors = 0;
 
@@ -22,7 +21,7 @@ export function updateTimer() {
     } else {
         clearInterval(intervalId);
         timeLeftText.textContent = "Timer has ended";
-        textarea.disabled = true // Disable textarea when timer runs out
+        textarea.disabled = true
         previousData.classList.remove("hide-previous")
         saveResult(parseInt(wordsPerMinuteText.textContent), parseInt(accuracyCorrectText.textContent));
         displayResults();
@@ -41,7 +40,6 @@ export function resetTimer() {
     timeLeftText.textContent = timeLeft;
     textarea.disabled = false
 
-    // Reset input count ,errors and text
     inputCount = 0;
     errors = 0;
     document.getElementById("inputArea").value = "";

@@ -1,12 +1,9 @@
 import { timePassed } from "./timer.js";
 import { textarea } from "./timer.js";
 
-
 export const errorsElement = document.querySelector("#error");
 export const accuracyCorrectText = document.querySelector("#accuracy");
 export const wordsPerMinuteText = document.querySelector("#wpm");
-
-
 
 
 let inputCount = 0;
@@ -16,7 +13,6 @@ export function resetAccuracyAndWPM() {
     inputCount = 0;
     errors = 0;
 }
-
 
 
 function updateErrors(text, randomTextSpan) {
@@ -39,7 +35,7 @@ function updateErrors(text, randomTextSpan) {
         if (/[\W_]/.test(charText) && typed === ' ') {
             setCharFalse(char);
             errors++;
-        } 
+        }
         if (index === inputCount) {
             char.classList.add("next-character");
         } else {
@@ -113,34 +109,22 @@ export function updateAccuracyAndWPM() {
     const text = textarea.value;
     const typedWords = text.trim().split(/\s+/);
     const randomTextSpan = document.querySelectorAll(".letter");
-
     updateErrors(text, randomTextSpan);
-
     const accuracy = calculateAccuracy(inputCount, errors);
     updateAccuracy(accuracy);
-
     const wordsPerMinute = calculateWordsPerMinute(typedWords, timePassed);
     updateWordsPerMinute(wordsPerMinute);
-
     updateErrorsCount(errors);
-
-
 }
 
 
 
 export function saveResult(wpm, acc) {
-    // Retrieve previous results from local storage or initialize an empty array
     let results = JSON.parse(localStorage.getItem('typingResults')) || [];
-
-    // Get current date and time
     const currentDate = new Date();
-    const dateTimeString = currentDate.toISOString(); // Convert to ISO string for easy storage and retrieval
-
-    // Add current result with date and time to the array
+    const dateTimeString = currentDate.toISOString();
     results.push({ wpm: wpm, acc: acc, dateTime: dateTimeString });
 
-    // Store the updated array back to local storage
     localStorage.setItem('typingResults', JSON.stringify(results));
 }
 
@@ -148,19 +132,28 @@ export function saveResult(wpm, acc) {
 export function displayResults() {
     let results = JSON.parse(localStorage.getItem('typingResults')) || [];
 
-    // Reverse the order of results array
     results.reverse();
 
-    // Display results however you want, for example, in a list
-    results.forEach((result, index) => {
-        // Calculate the adjusted index based on the reversed order
-        let adjustedIndex = results.length - index;
+    const previousDataContainer = document.getElementById('previous-data');
+    previousDataContainer.innerHTML = '';
 
-        console.log(`Result ${adjustedIndex}: WPM - ${result.wpm}, ACC - ${result.acc}`);
+    results.forEach((result, index) => {
+        let adjustedIndex = results.length - index;
+        let formattedDateTime = formatDateTime(result.dateTime);
+
+        let resultDiv = document.createElement('div');
+        resultDiv.classList.add('result');
+        resultDiv.innerHTML = `Result ${adjustedIndex}: WPM - ${result.wpm}, ACC - ${result.acc}, Date - ${formattedDateTime}`;
+
+        previousDataContainer.appendChild(resultDiv);
     });
 }
 
-
+function formatDateTime(dateTimeString) {
+    const dateTime = new Date(dateTimeString);
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+    return dateTime.toLocaleDateString(undefined, options);
+}
 
 
 export function inputData() {
