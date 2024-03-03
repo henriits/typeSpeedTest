@@ -182,3 +182,13 @@ export function inputData() {
     textarea.addEventListener("input", updateAccuracyAndWPM);
 
 }
+
+
+// Function to delete WPM and ACC data from localStorage
+function deleteData() {
+    localStorage.removeItem('typingResults');
+}
+
+// Add event listener to the delete data button
+const deleteDataButton = document.getElementById('deleteDataButton');
+deleteDataButton.addEventListener('click', deleteData);

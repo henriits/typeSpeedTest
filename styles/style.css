@@ -48,8 +48,9 @@ body {
     font-size: 1.2rem;
 }
 
-.button-container {
+.buttons {
     display: flex;
+    flex-direction: row;
     gap: 10px;
 }
 
@@ -116,8 +117,10 @@ body {
 }
 
 .btn {
+    display: flex;
+    flex-wrap: wrap;
     border-radius: 30px;
-    width: 125px;
+    padding: 10px;
     background-color: #ffffff;
     color: #4CAF50;
 }
