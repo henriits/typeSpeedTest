@@ -1,11 +1,12 @@
 import { previousData } from "./startAndDisplay.js";
-import { updateAccuracyAndWPM } from "./input.js";
+import { updateAccuracyAndWPM, saveResult } from "./input.js";
+import { wordsPerMinuteText,accuracyCorrectText } from "./input.js";
 
 export const textarea = document.querySelector("#inputArea");
 export const timeLeftText = document.querySelector("#time")
 
 let intervalId;
-export let timeLeft = 60;
+export let timeLeft = 10;
 export let timePassed = 1;
 
 // Variables tracking input count and errors
@@ -23,6 +24,8 @@ export function updateTimer() {
         timeLeftText.textContent = "Timer has ended";
         textarea.disabled = true // Disable textarea when timer runs out
         previousData.classList.remove("hide-previous")
+        saveResult(parseInt(wordsPerMinuteText.textContent), parseInt(accuracyCorrectText.textContent));
+        
     }
 }
 
@@ -33,7 +36,7 @@ export function startTimer() {
 
 export function resetTimer() {
     clearInterval(intervalId);
-    timeLeft = 60;
+    timeLeft = 10;
     timePassed = 1;
     timeLeftText.textContent = timeLeft;
     textarea.disabled = false

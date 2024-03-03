@@ -2,9 +2,9 @@ import { timePassed } from "./timer.js";
 import { textarea } from "./timer.js";
 
 
-const errorsElement = document.querySelector("#error");
-const accuracyCorrectText = document.querySelector("#accuracy");
-const wordsPerMinuteText = document.querySelector("#wpm");
+export const errorsElement = document.querySelector("#error");
+export const accuracyCorrectText = document.querySelector("#accuracy");
+export const wordsPerMinuteText = document.querySelector("#wpm");
 
 
 
@@ -124,8 +124,25 @@ export function updateAccuracyAndWPM() {
 
     updateErrorsCount(errors);
 
+
 }
 
+
+
+export function saveResult(wpm, acc) {
+    // Retrieve previous results from local storage or initialize an empty array
+    let results = JSON.parse(localStorage.getItem('typingResults')) || [];
+
+    // Get current date and time
+    const currentDate = new Date();
+    const dateTimeString = currentDate.toISOString(); // Convert to ISO string for easy storage and retrieval
+
+    // Add current result with date and time to the array
+    results.push({ wpm: wpm, acc: acc, dateTime: dateTimeString });
+
+    // Store the updated array back to local storage
+    localStorage.setItem('typingResults', JSON.stringify(results));
+}
 
 
 
