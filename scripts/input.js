@@ -90,7 +90,6 @@ function calculateAccuracy(inputCount, errors) {
 }
 
 function updateAccuracy(accuracy) {
-    localStorage.setItem("accuracy", accuracy);
     accuracyCorrectText.textContent = accuracy;
 }
 
@@ -101,7 +100,6 @@ function calculateWordsPerMinute(typedWords, timePassed) {
 }
 
 function updateWordsPerMinute(wordsPerMinute) {
-    localStorage.setItem("wpm", wordsPerMinute);
     wordsPerMinuteText.textContent = wordsPerMinute;
 }
 
