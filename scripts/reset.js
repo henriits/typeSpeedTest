@@ -19,6 +19,9 @@ export async function restartWithCurrentText() {
     document.querySelector("#inputArea").value = "";
     document.querySelector("#inputArea").focus();
 
+ 
+
+
 
     let letters = document.querySelectorAll(".letter");
     letters.forEach(letter => {
@@ -28,4 +31,8 @@ export async function restartWithCurrentText() {
         letter.style.backgroundColor = "";
     });
     document.querySelector("#inputArea").addEventListener("input", startTimerOnFirstKeyPress);
+    document.querySelectorAll(".letter").forEach(function(element) {
+        element.classList.remove("next-character");
+      });
+      
 }
