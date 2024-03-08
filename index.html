@@ -1,67 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Speed typing test</title>
+        <link rel="stylesheet" href="styles/style.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speed typing test</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
+    <body>
+        <div style="color: white; text-align: center">
+            <h1>Speed typing test</h1>
+        </div>
+        <div class="container">
+            <div class="data-container">
+                <div class="title-data">
+                    <div class="title">WPM</div>
+                    <div class="data-output" id="wpm">0</div>
+                </div>
+                <div class="title-data">
+                    <div class="title">Errors</div>
+                    <div class="data-output" id="error">0</div>
+                </div>
+                <div class="title-data">
+                    <div class="title">Time</div>
+                    <div class="data-output" id="time">0</div>
+                </div>
+                <div class="title-data">
+                    <div class="title">Accuracy %</div>
+                    <div class="data-output" id="accuracy">0</div>
+                </div>
+                <div class="buttons">
+                    <button class="btn" id="resetButton">Reset</button>
+                    <button class="btn" id="restartButton">Restart</button>
+                    <button class="btn" id="deleteDataButton">
+                        Delete Results
+                    </button>
+                </div>
+            </div>
 
-<body>
-    <div style="color:white; text-align:center">
-        <h1>Speed typing test</h1>
-    </div>
-    <div class="container">
-
-        <div class="data-container">
-
-            <div class="title-data">
-                <div class="title">WPM</div>
-                <div class="data-output" id="wpm">0</div>
-            </div>
-            <div class="title-data">
-                <div class="title">Errors</div>
-                <div class="data-output" id="error">0</div>
-            </div>
-            <div class="title-data">
-                <div class="title">Time</div>
-                <div class="data-output" id="time">0</div>
-            </div>
-            <div class="title-data">
-                <div class="title">Accuracy %</div>
-                <div class="data-output" id="accuracy">0</div>
-            </div>
-            <div class="buttons">
-                <button class="btn" id="resetButton">Reset</button>
-                <button class="btn" id="restartButton">Restart</button>
-                <button class="btn" id="deleteDataButton">Delete Results</button>
+            <div class="text-container">
+                <div class="letter-divs" id="lines-go-here"></div>
+                <div class="tips">
+                    <p>Start typing or click on green area</p>
+                    <p>Use reset button or ESC to reset with new text!</p>
+                    <p>
+                        Use restart button or ENTER to restart with same text!
+                    </p>
+                </div>
             </div>
         </div>
+        <div class="previous-container hide-previous" id="previous-data"></div>
 
-        <div class="text-container">
-
-            <div class="letter-divs" id="lines-go-here"></div>
-            <div class="tips">
-                <p>Start typing or click on green area</p>
-                <p>Use reset button or ESC to reset with new text!</p>
-                <p>Use restart button or ENTER to restart with same text!</p>
-            </div>
+        <div class="input-area">
+            <textarea
+                id="inputArea"
+                cols="30"
+                rows="10"
+                placeholder="Start typing here..."
+            ></textarea>
         </div>
 
-    </div>
-    <div class="previous-container hide-previous" id="previous-data">
-
-
-    </div>
-
-
-
-    <div class="input-area">
-        <textarea id="inputArea" cols="30" rows="10" placeholder="Start typing here..."></textarea>
-    </div>
-
-    <script type="module" src="scripts/main.js"></script>
-</body>
-
+        <script type="module" src="scripts/main.js"></script>
+    </body>
 </html>

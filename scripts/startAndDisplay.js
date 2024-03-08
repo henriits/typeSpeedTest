@@ -6,11 +6,16 @@ export const maximumLinesOfText = 15;
 export const previousData = document.querySelector("#previous-data");
 
 export async function displayText() {
-    const text = await displayRandomLines(minimumLinesOfText, maximumLinesOfText);
+    const text = await displayRandomLines(
+        minimumLinesOfText,
+        maximumLinesOfText
+    );
     return text;
 }
 
 export function startTimerOnFirstKeyPress() {
     startTimer();
-    document.querySelector("#inputArea").removeEventListener("input", startTimerOnFirstKeyPress);
+    document
+        .querySelector("#inputArea")
+        .removeEventListener("input", startTimerOnFirstKeyPress);
 }

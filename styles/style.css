@@ -38,12 +38,12 @@ body {
 }
 
 .title {
-    color: #4E9F3D;
+    color: #4e9f3d;
     font-weight: bold;
 }
 
 .data-output {
-    color: #1E5128;
+    color: #1e5128;
     font-size: 1.2rem;
 }
 
@@ -61,17 +61,17 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    background-color: #D8E9A8;
+    background-color: #d8e9a8;
     padding: 10px;
     border-radius: 5px;
 }
 
 .correct {
-    color: #4CAF50;
+    color: #4caf50;
 }
 
 .false {
-    color: #FF5252;
+    color: #ff5252;
 }
 
 .next-character {
@@ -91,13 +91,10 @@ body {
     justify-content: center;
 }
 
-
-
 .graph-content {
     flex-grow: 1;
     margin-left: 10px;
 }
-
 
 .hide-previous {
     display: none;
@@ -106,7 +103,6 @@ body {
 .input-container {
     margin-top: 20px;
 }
-
 
 #inputArea {
     position: absolute;
@@ -120,13 +116,12 @@ body {
     border-radius: 30px;
     padding: 10px;
     background-color: #ffffff;
-    color: #4CAF50;
+    color: #4caf50;
 }
 
 .btn:hover {
-    color:#D8E9A8;
+    color: #d8e9a8;
     cursor: pointer;
-
 }
 
 .tips {
@@ -134,8 +129,6 @@ body {
     flex-direction: row;
     color: #fff;
 }
-
-
 
 .title-and-result {
     display: flex;
@@ -146,13 +139,13 @@ p {
     padding: 15px;
 }
 
-
 .typing-results-table {
     border-collapse: collapse;
     width: 100%;
 }
 
-.typing-results-table th, .typing-results-table td {
+.typing-results-table th,
+.typing-results-table td {
     padding: 10px; /* Adjust the padding as needed */
 }
 

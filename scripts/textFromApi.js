@@ -16,7 +16,9 @@ async function getRandomAuthor() {
 
 async function getRandomLinesFromAuthor(author, lineCount) {
     try {
-        const response = await fetch(`https://poetrydb.org/author/${author}/lines`);
+        const response = await fetch(
+            `https://poetrydb.org/author/${author}/lines`
+        );
         const data = await response.json();
         const randomIndex = Math.floor(Math.random() * data.length);
         const lines = data[randomIndex].lines.slice(0, lineCount);
@@ -32,10 +34,16 @@ export async function displayRandomLines(minLineCount, maxLineCount) {
         container.innerHTML = "Loading...";
 
         const randomAuthor = await getRandomAuthor();
-        let randomLines = await getRandomLinesFromAuthor(randomAuthor, maxLineCount);
+        let randomLines = await getRandomLinesFromAuthor(
+            randomAuthor,
+            maxLineCount
+        );
 
         if (randomLines.length < minLineCount) {
-            randomLines = await getRandomLinesFromAuthor(randomAuthor, minLineCount);
+            randomLines = await getRandomLinesFromAuthor(
+                randomAuthor,
+                minLineCount
+            );
         }
 
         container.innerHTML = "";
@@ -45,8 +53,8 @@ export async function displayRandomLines(minLineCount, maxLineCount) {
             for (let j = 0; j < line.length; j++) {
                 const letterSpan = document.createElement("span");
                 letterSpan.classList.add("letter");
-                if (line[j] === ' ') {
-                    letterSpan.innerHTML = '&nbsp;';
+                if (line[j] === " ") {
+                    letterSpan.innerHTML = "&nbsp;";
                 } else {
                     letterSpan.textContent = line[j].toLowerCase();
                 }
@@ -57,4 +65,3 @@ export async function displayRandomLines(minLineCount, maxLineCount) {
         console.error("Error displaying random lines:", error);
     }
 }
-

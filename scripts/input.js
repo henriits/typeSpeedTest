@@ -1,11 +1,10 @@
-import { timePassed, textarea, testTime} from "./timer.js";
+import { timePassed, textarea, testTime } from "./timer.js";
 import { previousData } from "./startAndDisplay.js";
 import { restartWithCurrentText } from "./reset.js";
 
 export const errorsElement = document.querySelector("#error");
 export const accuracyCorrectText = document.querySelector("#accuracy");
 export const wordsPerMinuteText = document.querySelector("#wpm");
-
 
 let inputCount = 0;
 let errors = 0;
@@ -15,7 +14,6 @@ export function resetAccuracyAndWPM() {
     errors = 0;
 }
 
-
 function updateErrors(text, randomTextSpan) {
     errors = 0;
     randomTextSpan.forEach((char, index) => {
@@ -23,17 +21,21 @@ function updateErrors(text, randomTextSpan) {
         let charText = char.innerText.trim();
         if (typed == null) {
             clearCharStyles(char);
-        } else if (typed === charText || (typed === ' ' && charText === '&nbsp;') || (/[^\w\s]/.test(charText) && typed === charText)) {
+        } else if (
+            typed === charText ||
+            (typed === " " && charText === "&nbsp;") ||
+            (/[^\w\s]/.test(charText) && typed === charText)
+        ) {
             setCharCorrect(char);
-        } else if (typed.trim() !== '') {
+        } else if (typed.trim() !== "") {
             setCharFalse(char);
             errors++;
         }
-        if ((/[a-zA-Z"']/).test(charText) && typed === ' ') {
+        if (/[a-zA-Z"']/.test(charText) && typed === " ") {
             setCharFalse(char);
             errors++;
         }
-        if (/[\W_]/.test(charText) && typed === ' ') {
+        if (/[\W_]/.test(charText) && typed === " ") {
             setCharFalse(char);
             errors++;
         }
@@ -47,7 +49,6 @@ function updateErrors(text, randomTextSpan) {
     inputCount = text.length;
 }
 
-
 textarea.addEventListener("keydown", (event) => {
     if (event.key === "Backspace" && inputCount > 0) {
         inputCount--;
@@ -58,8 +59,6 @@ textarea.addEventListener("keydown", (event) => {
 textarea.addEventListener("input", (event) => {
     updateErrors(event.target.value, document.querySelectorAll(".letter"));
 });
-
-
 
 function clearCharStyles(char) {
     char.classList.remove("correct");
@@ -79,9 +78,11 @@ function setCharFalse(char) {
     char.style.backgroundColor = "";
 }
 
-
 function calculateAccuracy(inputCount, errors) {
-    let accuracy = inputCount > 0 ? Math.round(((inputCount - errors) / inputCount) * 100) : 100;
+    let accuracy =
+        inputCount > 0
+            ? Math.round(((inputCount - errors) / inputCount) * 100)
+            : 100;
     accuracy = Math.max(0, accuracy);
     return accuracy;
 }
@@ -91,7 +92,9 @@ function updateAccuracy(accuracy) {
 }
 
 function calculateWordsPerMinute(typedWords, timePassed) {
-    let wordsPerMinute = Math.round((typedWords.length / timePassed) * parseInt(testTime));
+    let wordsPerMinute = Math.round(
+        (typedWords.length / timePassed) * parseInt(testTime)
+    );
     wordsPerMinute = Math.max(0, wordsPerMinute);
     return wordsPerMinute;
 }
@@ -100,11 +103,9 @@ function updateWordsPerMinute(wordsPerMinute) {
     wordsPerMinuteText.textContent = wordsPerMinute;
 }
 
-
 function updateErrorsCount(errors) {
     errorsElement.textContent = errors;
 }
-
 
 export function updateAccuracyAndWPM() {
     const text = textarea.value;
@@ -118,28 +119,26 @@ export function updateAccuracyAndWPM() {
     updateErrorsCount(errors);
 }
 
-
 export function saveResult(wpm, acc) {
-    let results = JSON.parse(localStorage.getItem('typingResults')) || [];
+    let results = JSON.parse(localStorage.getItem("typingResults")) || [];
     const currentDate = new Date();
     const dateTimeString = currentDate.toISOString();
     results.push({ wpm: wpm, acc: acc, dateTime: dateTimeString });
 
-    localStorage.setItem('typingResults', JSON.stringify(results));
+    localStorage.setItem("typingResults", JSON.stringify(results));
 }
 
-
 export function displayResultsInTable() {
-    let results = JSON.parse(localStorage.getItem('typingResults')) || [];
+    let results = JSON.parse(localStorage.getItem("typingResults")) || [];
     results.reverse();
-    const previousDataContainer = document.querySelector('#previous-data');
-    previousDataContainer.innerHTML = '';
-    const table = document.createElement('table');
-    table.classList.add('typing-results-table');
-    const headerRow = document.createElement('tr');
-    const headerCells = ['Result', 'WPM', 'ACC', 'Date'];
-    headerCells.forEach(cellText => {
-        const cell = document.createElement('th');
+    const previousDataContainer = document.querySelector("#previous-data");
+    previousDataContainer.innerHTML = "";
+    const table = document.createElement("table");
+    table.classList.add("typing-results-table");
+    const headerRow = document.createElement("tr");
+    const headerCells = ["Result", "WPM", "ACC", "Date"];
+    headerCells.forEach((cellText) => {
+        const cell = document.createElement("th");
         cell.textContent = cellText;
         headerRow.appendChild(cell);
     });
@@ -149,15 +148,15 @@ export function displayResultsInTable() {
         let adjustedIndex = results.length - index;
         let formattedDateTime = formatDateTime(result.dateTime);
 
-        const row = document.createElement('tr');
+        const row = document.createElement("tr");
         const cells = [
             adjustedIndex,
             result.wpm,
             result.acc,
-            formattedDateTime
+            formattedDateTime,
         ];
-        cells.forEach(cellText => {
-            const cell = document.createElement('td');
+        cells.forEach((cellText) => {
+            const cell = document.createElement("td");
             cell.textContent = cellText;
             row.appendChild(cell);
         });
@@ -167,27 +166,27 @@ export function displayResultsInTable() {
     previousDataContainer.appendChild(table);
 }
 
-
 function formatDateTime(dateTimeString) {
     const dateTime = new Date(dateTimeString);
-    const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+    const options = {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+    };
     return dateTime.toLocaleDateString(undefined, options);
 }
 
-
 export function inputData() {
     textarea.addEventListener("input", updateAccuracyAndWPM);
-
 }
-
-
 
 function deleteData() {
     restartWithCurrentText();
-    localStorage.removeItem('typingResults');
+    localStorage.removeItem("typingResults");
     previousData.classList.add("hide-previous");
 }
 
-
-const deleteDataButton = document.querySelector('#deleteDataButton');
-deleteDataButton.addEventListener('click', deleteData);
+const deleteDataButton = document.querySelector("#deleteDataButton");
+deleteDataButton.addEventListener("click", deleteData);
